@@ -1,6 +1,6 @@
 body {
-    background-color: #D4CCC1;
-  }
+  background-color: #5d5d5d;
+}
 
   .preloader {
     display: block;
@@ -15,7 +15,8 @@ body {
     justify-content: center;
     width: 100%;
     left: 0;
-    padding:1rem 0
+    padding:1rem 0;
+    background-color: #252525;
   }
 
   .logo-header img{

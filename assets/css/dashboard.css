@@ -1,10 +1,31 @@
 body {
-    background-color: #D4CCC1;
+    background-color: #5d5d5d;
 }
+.logo-header{
+    position: fixed;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    left: 0;
+    padding:1rem 0;
+    background-color: #252525;
+  }
 
+  .logo-header img{
+    width: 100%;
+    max-width: 200px;
+  }
 .vertical-centering {
     align-items: center;
     min-height: 100vh;
+}
+
+.container{
+    padding-top:1rem;
+    padding-bottom:5rem;
+
 }
 
 .wizard-container__content {
@@ -14,7 +35,7 @@ body {
 }
 
 .wizard-footer {
-    background-color: #fff;
+    background-color: #252525;
     width: 100%;
     left: 0;
     padding: 1rem .5rem;
@@ -40,6 +61,7 @@ body {
     width: 100%;
     display: block;
     text-align: center;
+    color:#fff
 }
 
 .wizard-container__content ul {
@@ -54,14 +76,14 @@ body {
 }
 
 .wizard-container__content ul li {
-    width: 17.5%;
-    margin: 1rem;
+    width: 28.8%;
+    margin: .5rem;
     background-color: white;
     display: flex;
     border-radius: 5px;
     justify-content: center;
     align-items: center;
-    padding: 1rem;
+    padding: .5rem;
     -webkit-transition: all .3s ease-in-out;
     -moz-transition: all .3s ease-in-out;
     -ms-transition: all .3s ease-in-out;
@@ -80,6 +102,7 @@ body {
 .wizard-container__content ul li img,
 .wizard-container__content ul li svg {
     max-width: 100%;
+    border-radius: 5px;
 }
 
 .wizard-container__content ul li:hover {

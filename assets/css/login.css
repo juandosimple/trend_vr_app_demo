@@ -1,12 +1,9 @@
 body {
-    background-color: #d4ccc1;
+    background-color: #5d5d5d;
     font-family: "Syne", sans-serif;
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
-    background: url(../images/background-image-1.jpg);
-    background-size: cover;
-    background-position: center;
 }
 
 .login-container {
