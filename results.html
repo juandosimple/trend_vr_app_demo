@@ -98,9 +98,12 @@
               "Content-Type": "application/json"
             },
             body: JSON.stringify({
+              //"human_image_url": 'https://askybl.com/temporal/user.jpg',
+              //"cloth_image_url": 'https://askybl.com/temporal/cloth.jpg',
+              //"cloth_image_url": 'https://askybl.com/temporal/jogger-1.jpg',
               "human_image_url": decodeURIComponent(userImage),
               "cloth_image_url": decodeURIComponent(clothingImage),
-              "body_part": "upperbody"
+              "body_part": "lowerbody"
             })
           })
           .then(response => response.json())
