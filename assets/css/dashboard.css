@@ -57,6 +57,14 @@ body {
 }
 
 .wizard-container__content .title {
+    font-size: 1.2rem;
+    width: 100%;
+    display: block;
+    text-align: center;
+    color:#fff
+}
+
+.wizard-container__content .subtitle {
     font-size: 1rem;
     width: 100%;
     display: block;
@@ -73,6 +81,10 @@ body {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+}
+
+.wizard-container__content#select-type li {
+    width: 45.5%;
 }
 
 .wizard-container__content ul li {

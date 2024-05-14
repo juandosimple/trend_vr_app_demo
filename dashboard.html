@@ -20,12 +20,13 @@
       border-radius: 5px;
       cursor: pointer;
     }
+
     #select-clothing li span,
-    #select-type li span{
+    #select-type li span {
       font-weight: bold;
-    text-align: center;
-    width: 100%;
-    display: block;
+      text-align: center;
+      width: 100%;
+      display: block;
     }
 
     #select-clothing li.active,
@@ -92,6 +93,25 @@
       text-align: center;
     }
   </style>
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyCtZxlonTfLpU_5-HMuf6RdDmbJy3iMdPU",
+      authDomain: "trend-vr-demo.firebaseapp.com",
+      projectId: "trend-vr-demo",
+      storageBucket: "trend-vr-demo.appspot.com",
+      messagingSenderId: "383550694303",
+      appId: "1:383550694303:web:362cf770089f4008e4d3aa"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+  </script>
 </head>
 
 <body>
@@ -157,106 +177,106 @@
     crossorigin="anonymous"></script>
 
   <script>
-document.addEventListener('DOMContentLoaded', function () {
-  var clothingTypes = document.querySelectorAll('#select-type li');
-  var selectedClothingType = null;
-  var selectedClothingImage = null;
-  var selectedUserImage = null;
+    document.addEventListener('DOMContentLoaded', function () {
+      var clothingTypes = document.querySelectorAll('#select-type li');
+      var selectedClothingType = null;
+      var selectedClothingImage = null;
+      var selectedUserImage = null;
 
-  function addClickEventsToOptions() {
-    var clothingOptions = document.querySelectorAll('#clothing-options li');
-    clothingOptions.forEach(function (option) {
-      option.addEventListener('click', function () {
-        // Remove active class from all list items
-        clothingOptions.forEach(function (li) {
-          li.classList.remove('active');
+      function addClickEventsToOptions() {
+        var clothingOptions = document.querySelectorAll('#clothing-options li');
+        clothingOptions.forEach(function (option) {
+          option.addEventListener('click', function () {
+            // Remove active class from all list items
+            clothingOptions.forEach(function (li) {
+              li.classList.remove('active');
+            });
+            // Add active class to the clicked list item
+            this.classList.add('active');
+            // Store selected clothing image
+            selectedClothingImage = this.querySelector('img').src;
+          });
         });
-        // Add active class to the clicked list item
-        this.classList.add('active');
-        // Store selected clothing image
-        selectedClothingImage = this.querySelector('img').src;
+      }
+
+      clothingTypes.forEach(function (type) {
+        type.addEventListener('click', function () {
+          // Remove active class from all list items
+          clothingTypes.forEach(function (li) {
+            li.classList.remove('active');
+          });
+          // Add active class to the clicked list item
+          this.classList.add('active');
+
+          selectedClothingType = this.dataset.clothingType;
+          var clothingImages = {
+            jean: ['./assets/images/organization-1-logo.png', './assets/images/organization-2-logo.png', './assets/images/organization-3-logo.png', './assets/images/organization-4-logo.png', './assets/images/organization-5-logo.png', './assets/images/organization-6-logo.png', './assets/images/organization-7-logo.png', './assets/images/organization-8-logo.png', './assets/images/organization-9-logo.png'],
+            pants: ['./assets/images/organization-1-logo.png', './assets/images/organization-2-logo.png', './assets/images/organization-3-logo.png', './assets/images/organization-4-logo.png', './assets/images/organization-5-logo.png', './assets/images/organization-6-logo.png', './assets/images/organization-7-logo.png', './assets/images/organization-8-logo.png', './assets/images/organization-9-logo.png'],
+            top: ['./assets/images/organization-1-logo.png', './assets/images/organization-2-logo.png', './assets/images/organization-3-logo.png', './assets/images/organization-4-logo.png', './assets/images/organization-5-logo.png', './assets/images/organization-6-logo.png', './assets/images/organization-7-logo.png', './assets/images/organization-8-logo.png', './assets/images/organization-9-logo.png'],
+          };
+          var clothingImagesHTML = '';
+          clothingImages[selectedClothingType].forEach(function (image) {
+            clothingImagesHTML += '<li><img src="' + image + '" alt=""></li>';
+          });
+          document.getElementById('clothing-options').innerHTML = clothingImagesHTML;
+
+          // Add click event to new list items
+          addClickEventsToOptions();
+        });
+      });
+
+      document.getElementById('nextButton').addEventListener('click', function () {
+        document.getElementById('select-type').style.display = 'none';
+        document.getElementById('select-clothing').style.display = 'flex';
+      });
+
+      document.getElementById('backButton').addEventListener('click', function () {
+        document.getElementById('select-clothing').style.display = 'none';
+        document.getElementById('select-type').style.display = 'flex';
+      });
+
+      document.getElementById('nextButton2').addEventListener('click', function () {
+        document.getElementById('container1').style.display = 'none';
+        document.getElementById('container2').style.display = 'flex';
+      });
+
+      document.getElementById('backButton2').addEventListener('click', function () {
+        document.getElementById('container2').style.display = 'none';
+        document.getElementById('container1').style.display = 'flex';
+        document.getElementById('select-type').style.display = 'none';
+        document.getElementById('select-clothing').style.display = 'flex';
+      });
+
+      document.getElementById('nextButton3').addEventListener('click', function () {
+        if (selectedClothingType && selectedClothingImage && selectedUserImage) {
+          // Redirect to results.html with query parameters
+          window.location.href = `results.html?clothingType=${selectedClothingType}&clothingImage=${encodeURIComponent(selectedClothingImage)}&userImage=${encodeURIComponent(selectedUserImage)}`;
+        } else {
+          alert('Please select clothing and upload your photo.');
+        }
+      });
+
+      // Handle form submission for file upload
+      document.getElementById('uploadForm').addEventListener('submit', function (event) {
+        event.preventDefault(); // Prevent default form submission
+
+        // Simulate file upload success
+        document.getElementById('uploadSuccessMessage').style.display = 'block';
+
+        // Hide the file input and upload button
+        document.getElementById('fileUpload').style.display = 'none';
+        this.querySelector('button[type="submit"]').style.display = 'none';
+
+        // Store selected user image (assuming the user image is the file input value for simulation)
+        selectedUserImage = document.getElementById('fileUpload').value;
+
+        // Enable the next step button
+        document.getElementById('nextButton3').disabled = false;
+
+        // Hide the upload container
+        document.querySelector('.upload-container').style.display = 'none';
       });
     });
-  }
-
-  clothingTypes.forEach(function (type) {
-    type.addEventListener('click', function () {
-      // Remove active class from all list items
-      clothingTypes.forEach(function (li) {
-        li.classList.remove('active');
-      });
-      // Add active class to the clicked list item
-      this.classList.add('active');
-
-      selectedClothingType = this.dataset.clothingType;
-      var clothingImages = {
-        jean: ['./assets/images/organization-1-logo.png', './assets/images/organization-2-logo.png', './assets/images/organization-3-logo.png', './assets/images/organization-4-logo.png', './assets/images/organization-5-logo.png', './assets/images/organization-6-logo.png', './assets/images/organization-7-logo.png', './assets/images/organization-8-logo.png', './assets/images/organization-9-logo.png'],
-        pants:['./assets/images/organization-1-logo.png', './assets/images/organization-2-logo.png', './assets/images/organization-3-logo.png', './assets/images/organization-4-logo.png', './assets/images/organization-5-logo.png', './assets/images/organization-6-logo.png', './assets/images/organization-7-logo.png', './assets/images/organization-8-logo.png', './assets/images/organization-9-logo.png'],
-        top: ['./assets/images/organization-1-logo.png', './assets/images/organization-2-logo.png', './assets/images/organization-3-logo.png', './assets/images/organization-4-logo.png', './assets/images/organization-5-logo.png', './assets/images/organization-6-logo.png', './assets/images/organization-7-logo.png', './assets/images/organization-8-logo.png', './assets/images/organization-9-logo.png'],
-      };
-      var clothingImagesHTML = '';
-      clothingImages[selectedClothingType].forEach(function (image) {
-        clothingImagesHTML += '<li><img src="' + image + '" alt=""></li>';
-      });
-      document.getElementById('clothing-options').innerHTML = clothingImagesHTML;
-
-      // Add click event to new list items
-      addClickEventsToOptions();
-    });
-  });
-
-  document.getElementById('nextButton').addEventListener('click', function () {
-    document.getElementById('select-type').style.display = 'none';
-    document.getElementById('select-clothing').style.display = 'flex';
-  });
-
-  document.getElementById('backButton').addEventListener('click', function () {
-    document.getElementById('select-clothing').style.display = 'none';
-    document.getElementById('select-type').style.display = 'flex';
-  });
-
-  document.getElementById('nextButton2').addEventListener('click', function () {
-    document.getElementById('container1').style.display = 'none';
-    document.getElementById('container2').style.display = 'flex';
-  });
-
-  document.getElementById('backButton2').addEventListener('click', function () {
-    document.getElementById('container2').style.display = 'none';
-    document.getElementById('container1').style.display = 'flex';
-    document.getElementById('select-type').style.display = 'none';
-    document.getElementById('select-clothing').style.display = 'flex';
-  });
-
-  document.getElementById('nextButton3').addEventListener('click', function () {
-    if (selectedClothingType && selectedClothingImage && selectedUserImage) {
-      // Redirect to results.html with query parameters
-      window.location.href = `results.html?clothingType=${selectedClothingType}&clothingImage=${encodeURIComponent(selectedClothingImage)}&userImage=${encodeURIComponent(selectedUserImage)}`;
-    } else {
-      alert('Please select clothing and upload your photo.');
-    }
-  });
-
-  // Handle form submission for file upload
-  document.getElementById('uploadForm').addEventListener('submit', function (event) {
-    event.preventDefault(); // Prevent default form submission
-
-    // Simulate file upload success
-    document.getElementById('uploadSuccessMessage').style.display = 'block';
-
-    // Hide the file input and upload button
-    document.getElementById('fileUpload').style.display = 'none';
-    this.querySelector('button[type="submit"]').style.display = 'none';
-
-    // Store selected user image (assuming the user image is the file input value for simulation)
-    selectedUserImage = document.getElementById('fileUpload').value;
-
-    // Enable the next step button
-    document.getElementById('nextButton3').disabled = false;
-
-    // Hide the upload container
-    document.querySelector('.upload-container').style.display = 'none';
-  });
-});
 
   </script>
 
