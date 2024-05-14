@@ -18,7 +18,6 @@
       display: inline-block;
       border: 4px solid transparent;
       border-radius: 5px;
-      transition: border-color 0.3s ease-in-out;
       cursor: pointer;
     }
 
@@ -48,6 +47,8 @@
     }
 
     .btn.disabled,
+    .btn-primary[disabled],
+    .btn-secondary[disabled],
     .btn:disabled,
     fieldset:disabled .btn {
       background-color: #b6b5b4;
@@ -133,7 +134,7 @@
           </form>
         </div>
         <div id="uploadSuccessMessage" class="alert alert-success" style="display: none;">
-          ¡Subida con éxito!
+          ¡Uploaded succesfully!
         </div>
         <div class="wizard-footer">
           <button class="btn btn-secondary" id="backButton2">Back</button>
