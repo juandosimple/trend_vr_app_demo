@@ -9,7 +9,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400..800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./assets/css/dashboard.css">
+    <link rel="stylesheet" href="./assets/css/profile.css">
+    <link rel="stylesheet" href="./assets/css/styles.css">
     <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
 
     <style>
@@ -100,27 +101,7 @@ text-align: center;
 
     <div class="logo-header">
         <img src="./assets/images/logo-white.png" class="logo">
-        <a href="#" class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">Menu</a>
     </div>
-    <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
-        <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Menu</h5>
-        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body">
-        <ul>
-          <li>
-            <a href="./profile.html">Profile</a>
-          </li>
-          <li>
-            <a href="#">Browse stores</a>
-          </li>
-          <li>
-            <a href="#">Log out</a>
-          </li>
-        </ul>
-        </div>
-        </div>
     <div class="container">
         <div class="row justify-content-center vertical-centering" id="container2">
             <div class="col-12 wizard-container__content">
@@ -142,8 +123,21 @@ text-align: center;
             </div>
         </div>
     </div>
+    <div class="wizard-footer">
+        <a href="profile.html" type="button"><i data-feather="user"></i>
+        </a>
+        <a href="search.html" type="button"><i data-feather="search"></i></a>
+        <a href="settings.html" type="button"><i data-feather="settings"></i></a>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
+
+    <!-- Feather Icons -->
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script>
+    feather.replace();
+    </script>
+    <!-- Feather Icons -->
 </body>
 </html>

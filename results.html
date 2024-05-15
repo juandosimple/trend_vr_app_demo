@@ -12,6 +12,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400..800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./assets/css/results.css">
+  <link rel="stylesheet" href="./assets/css/styles.css">
 </head>
 <style>
       .wizard-footer a.btn-primary {
@@ -43,7 +44,7 @@
   <!-- Results Page -->
   <div class="logo-header">
     <img src="./assets/images/logo-white.png" class="logo">
-  </div>
+</div>
   <div class="container">
     <div class="row justify-content-center vertical-centering">
       <div class="col-12 wizard-container__content">
@@ -53,14 +54,15 @@
             <!-- Placeholder for the result image -->
           </div>
         </div>
-
-        <div class="wizard-footer">
-          <a href="results.html" class="btn btn-primary">Share your photo</a>
-        </div>
       </div>
     </div>
   </div>
-
+  <div class="wizard-footer">
+    <a href="profile.html" type="button"><i data-feather="user"></i>
+    </a>
+    <a href="search.html" type="button"><i data-feather="search"></i></a>
+    <a href="settings.html" type="button"><i data-feather="settings"></i></a>
+</div>
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
@@ -128,6 +130,12 @@
       }
     });
   </script>
+  <!-- Feather Icons -->
+  <script src="https://unpkg.com/feather-icons"></script>
+  <script>
+    feather.replace();
+  </script>
+  <!-- Feather Icons -->
 </body>
 
 </html>
