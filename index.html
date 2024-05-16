@@ -24,7 +24,7 @@
           <h1 class="subtitle">Join our community today!</h1>
         </div>
         <!-- Button para redirigir a dashboard.html -->
-        <a href="dashboard.html" class="btn gsi-material-button">
+        <a href="./profile.html" class="btn gsi-material-button">
           <div class="gsi-material-button-state"></div>
           <div class="gsi-material-button-content-wrapper">
             <div class="gsi-material-button-icon">
@@ -57,6 +57,29 @@
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>
 
+
+    <script>
+      // Función para generar un ID único
+      function generateID() {
+        return 'id_' + Math.random().toString(36).substr(2, 9);
+      }
+  
+      // Función que se ejecuta cuando la página se ha cargado completamente
+      window.onload = function () {
+        // Intentar obtener el userID desde localStorage
+        let userID = localStorage.getItem('userID');
+        
+        // Si no hay un userID en localStorage, generarlo y guardarlo
+        if (!userID) {
+          userID = generateID();
+          localStorage.setItem('userID', userID);
+        }
+        
+        // Mostrar el userID en la consola para propósitos de depuración
+        console.log('Current User ID:', userID);
+      };
+    </script>   
+    
 </body>
 
 </html>

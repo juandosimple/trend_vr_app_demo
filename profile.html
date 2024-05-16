@@ -14,42 +14,60 @@
     <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
 
     <style>
-        #preloader {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        #imageContainer{
-            width: 100%;
-    min-height: 200px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-        }
-        #imageContainer img{
-            max-width: 100%;
-            width: 250px;
-            margin:1rem 0;
-            background: #fff;
-    border-radius: 5px;
-    padding: 1rem;
-}
-
-.title{
-text-align: center;
-    width: 100%;
-    color: #fff;
-}
-.change-image{
-    width: 100%;
-    background: #252525;
-    padding: 1rem;
-    border-radius: 5px;
-    color: #fff;
-    text-decoration: none;
-    text-align: center;
-    margin: 1rem;
-}
+    #preloader {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #imageContainer {
+        width: 100%;
+        min-height: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    #imageContainer img {
+        max-width: 100%;
+        width: 250px;
+        margin: 1rem 0;
+        background: #fff;
+        border-radius: 5px;
+        padding: 1rem;
+    }
+    .title {
+        text-align: center;
+        width: 100%;
+        color: #fff;
+    }
+    .change-image {
+        width: 100%;
+        background: #252525;
+        padding: 1rem;
+        border-radius: 5px;
+        color: #fff;
+        text-decoration: none;
+        text-align: center;
+        margin: 1rem;
+    }
+    .empty-images {
+        flex-direction: column;
+        width: 100%;
+        justify-content: center;
+        display: flex;
+        align-items: center;
+    }
+    .empty-images p {
+        font-weight: 400;
+        color: #ccc;
+        font-size: 1.2rem;
+        text-align: center;
+        padding: 0 1rem;
+        margin: 0;
+    }
+    .empty-images span {
+        color: #9d9d9d;
+        margin-top: 1rem;
+    }
     </style>
     <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-storage.js"></script>
@@ -71,8 +89,10 @@ text-align: center;
             listRef.listAll().then(function(res) {
                 if (res.items.length === 0) {
                     document.getElementById('preloader').style.display = 'none';
-                    document.getElementById('imageContainer').innerHTML = "<p>You don't have any generated images yet.</p>";
+                    document.getElementById('imageContainer').style.display = 'none';
+                    document.querySelector('.empty-images').style.display = 'flex';
                 } else {
+                    document.querySelector('.empty-images').style.display = 'none';
                     res.items.forEach(function(imageRef) {
                         displayImage(imageRef);
                     });
@@ -94,7 +114,7 @@ text-align: center;
             });
         }
 
-        window.onload = displayImages;
+        
     </script>
 </head>
 <body>
@@ -107,6 +127,12 @@ text-align: center;
             <div class="col-12 wizard-container__content">
                 <h2 class="title">Your Profile image</h2>
                 
+                <div class="empty-images" style="display: none;">
+                    <dotlottie-player src="./assets/images/empty.lottie" background="transparent" speed="1" style="width: 300px; height: 300px" direction="1" playmode="normal" loop="" autoplay=""></dotlottie-player>
+                    <p >You don't have any images yet.</p>
+                    <span>Click on change profile image to upload one.</span>
+                </div>
+
                 <div id="imageContainer">
                     <div id="preloader">
                         <dotlottie-player src="./assets/images/1715774396840.lottie" 
@@ -119,19 +145,75 @@ text-align: center;
                     </div>
                 </div>
 
-                <a href="#" class="change-image">Change profile image</a>
+                <a href="#" class="change-image" data-bs-toggle="modal" data-bs-target="#exampleModal">Change profile image</a>
             </div>
         </div>
     </div>
+    <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog  modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Upload your image</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form id="uploadForm" enctype="multipart/form-data">
+                <input type="file" name="file" id="fileUpload">
+                <button type="submit" class="btn btn-primary">Upload</button>
+              </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
     <div class="wizard-footer">
-        <a href="profile.html" type="button"><i data-feather="user"></i>
-        </a>
+        <a href="profile.html" class="active" type="button"><i data-feather="user"></i></a>
         <a href="search.html" type="button"><i data-feather="search"></i></a>
         <a href="settings.html" type="button"><i data-feather="settings"></i></a>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
+
+        <script>
+            window.onload = function () {
+              let userID = localStorage.getItem('userID');
+              if (!userID) {
+                window.location.href = 'index.html';
+              } else {
+                displayImages();
+                console.log('Current User ID:', userID); // Para propósitos de depuración
+              }
+            };
+          </script>
+
+        <script>
+            document.getElementById('uploadForm').addEventListener('submit', function (event) {
+                event.preventDefault();
+                var file = document.getElementById('fileUpload').files[0];
+                var userID = localStorage.getItem('userID'); // Recupera el ID del usuario del Local Storage
+    
+                // Cambia 'file.name' a 'profile-image.jpg'
+                var storageRef = firebase.storage().ref('users/' + userID + '/profile-image.jpg'); // Fija el nombre del archivo
+    
+                var uploadTask = storageRef.put(file);
+    
+                uploadTask.on('state_changed', function (snapshot) {
+                    // Aquí puedes agregar un indicador de progreso basado en snapshot
+                }, function (error) {
+                    console.error('Upload failed:', error);
+                    alert('Error during file upload: ' + error.message);
+                }, function () {
+                    uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
+                        console.log('File available at', downloadURL);
+                        // Recargar la página después de subir la imagen
+                        window.location.reload();
+                    });
+                });
+            });
+        </script>
+
 
     <!-- Feather Icons -->
     <script src="https://unpkg.com/feather-icons"></script>

@@ -36,4 +36,41 @@ body {
 
 .wizard-footer a {
     color: #fff;
+    opacity: .3;
+}
+
+.wizard-footer a.active {
+    opacity: 1;
+}
+
+.modal-content{
+    background: #4a4a4a;
+}
+
+.modal-content .modal-header,
+.modal-content .modal-footer{
+    border:0
+}
+
+.modal-content .btn-close{
+    color:#fff;
+}
+
+.modal-content .btn.btn-primary{
+    background: #252525;
+    border-color: #252525;
+}
+
+.modal-content .modal-title{
+    color:#fff;
+}
+
+
+.modal-content .modal-body #uploadForm .btn-primary{
+    margin-top: 1rem;
+    width:100%
+}
+
+.modal-content .modal-body #uploadForm input{
+    color:#fff;
 }

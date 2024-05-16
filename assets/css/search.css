@@ -71,13 +71,13 @@
     transition: all .3s ease-in-out;
 }
 
-.wizard-container__content ul li:nth-child(odd) {
-    /*margin-left:0*/
+.wizard-container__content ul#clothing-options li {
+    opacity: .3;
+}
+.wizard-container__content ul#clothing-options li:nth-child(1) {
+    opacity: 1;
 }
 
-.wizard-container__content ul li:nth-child(even) {
-    /* margin-right:0*/
-}
 
 .wizard-container__content ul li img,
 .wizard-container__content ul li svg {
@@ -85,7 +85,16 @@
     border-radius: 5px;
 }
 
-.wizard-container__content ul li:hover {
+.wizard-container__content#select-type ul li:nth-child(1):hover {
+    -moz-transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    -o-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.wizard-container__content#clothing-options ul li:nth-child(1):hover {
     -moz-transform: scale(1.1);
     -webkit-transform: scale(1.1);
     -o-transform: scale(1.1);

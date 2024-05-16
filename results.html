@@ -60,7 +60,7 @@
   <div class="wizard-footer">
     <a href="profile.html" type="button"><i data-feather="user"></i>
     </a>
-    <a href="search.html" type="button"><i data-feather="search"></i></a>
+    <a href="search.html" type="button" class="active"><i data-feather="search"></i></a>
     <a href="settings.html" type="button"><i data-feather="settings"></i></a>
 </div>
   <!-- Bootstrap JS -->
@@ -132,6 +132,16 @@
   </script>
   <!-- Feather Icons -->
   <script src="https://unpkg.com/feather-icons"></script>
+  <script>
+    window.onload = function () {
+      let userID = localStorage.getItem('userID');
+      if (!userID) {
+        window.location.href = 'index.html';
+      } else {
+        console.log('Current User ID:', userID); // Para propósitos de depuración
+      }
+    };
+  </script>
   <script>
     feather.replace();
   </script>
