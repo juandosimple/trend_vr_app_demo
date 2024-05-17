@@ -2,6 +2,7 @@
   "products": [
     {
       "id": "12345",
+      "type": "lowerbody",
       "url": "https://www.prettylittlething.com/indigo-vintage-wash-belted-seam-front-flare-jeans.html",
       "name": "Tall Washed Black High Rise Straight Leg Jeans",
       "description": "Say goodbye to those last-minute 'fit emergencies with these PrettyLittleThing tall washed black high rise straight leg jeans doll. They're made from a washed black material with a high-rise waist and feature a straight leg fit, what's not to love about that? These tall jeans are a definite must-have this season doll and you won't want to miss out. Whatever your plans are this season, we're loving these tall jeans paired with a basic vest top and fresh kicks for a fresh off-duty combo.",
@@ -19,7 +20,12 @@
           "hex": "#00FF00"
         }
       ],
-      "sizes": ["S", "M", "L", "XL"],
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
       "pricing": {
         "currency": "USD",
         "regular_price": 25.00,
@@ -38,21 +44,26 @@
       },
       "gallery": [
         {
-          "url": "https://firebasestorage.googleapis.com/v0/b/trend-vr-demo.appspot.com/o/clothes%2Fjeans%2Fblack%2Fblack-1.jpg?alt=media&token=b31c9db1-4cbd-4319-a79a-0a9c20f3a0c8",
-          "alt": "Front view of the dress"
-        },
-        {
           "url": "https://firebasestorage.googleapis.com/v0/b/trend-vr-demo.appspot.com/o/clothes%2Fjeans%2Fblack%2Fblack-2.jpg?alt=media&token=607c2ad4-02e3-4450-becd-02ca9ae12e89",
           "alt": "Back view of the dress"
         },
         {
+          "url": "https://firebasestorage.googleapis.com/v0/b/trend-vr-demo.appspot.com/o/clothes%2Fjeans%2Fblack%2Fblack-1.jpg?alt=media&token=b31c9db1-4cbd-4319-a79a-0a9c20f3a0c8",
+          "alt": "Front view of the dress"
+        },
+        {
           "url": "https://firebasestorage.googleapis.com/v0/b/trend-vr-demo.appspot.com/o/clothes%2Fjeans%2Fblack%2Fblack-3.jpg?alt=media&token=8f3008aa-ec51-4cb9-98ec-ee5fc7c420de",
+          "alt": "Close-up of the fabric"
+        },
+        {
+          "url": "https://firebasestorage.googleapis.com/v0/b/trend-vr-demo.appspot.com/o/clothes%2Fjeans%2Fblack%2Fblack-AI.jpg?alt=media&token=cd9dd367-4afe-45f5-b79c-16abfcbbb103",
           "alt": "Close-up of the fabric"
         }
       ]
     },
     {
       "id": "12346",
+      "type": "lowerbody",
       "url": "https://www.prettylittlething.com/prettylittlething-tall-washed-black-high-rise-straight-leg-jeans.html",
       "name": "Light Blue Wash Asymmetric Waistband Baggy Low Rise Thigh Split Boyfriend Jeans",
       "description": "Add some seriously chic vibes to your denim collection with these boyfriend jeans. Featuring a light blue wash denim with an asymmetric waistband and thigh split. Pair with a crop top and fresh kicks for the ultimate off-duty vibe.",
@@ -70,7 +81,13 @@
           "hex": "#000000"
         }
       ],
-      "sizes": ["30", "32", "34", "36", "38"],
+      "sizes": [
+        "30",
+        "32",
+        "34",
+        "36",
+        "38"
+      ],
       "pricing": {
         "currency": "USD",
         "regular_price": 50.00,
@@ -97,13 +114,18 @@
           "alt": "Back view of the jeans"
         },
         {
-          "url": "hhttps://firebasestorage.googleapis.com/v0/b/trend-vr-demo.appspot.com/o/clothes%2Fjeans%2Fblue%2Fblue-3.jpg?alt=media&token=0da42d42-dcb3-4a37-ae8d-7f8b43dddfeb",
+          "url": "https://firebasestorage.googleapis.com/v0/b/trend-vr-demo.appspot.com/o/clothes%2Fjeans%2Fblue%2Fblue-3.jpg?alt=media&token=0da42d42-dcb3-4a37-ae8d-7f8b43dddfeb",
+          "alt": "Close-up of the fabric"
+        },
+        {
+          "url": "https://firebasestorage.googleapis.com/v0/b/trend-vr-demo.appspot.com/o/clothes%2Fjeans%2Fblue%2Fblue-AI.jpg?alt=media&token=e248cf77-b6c9-47a6-811f-d7e6f2564fb3",
           "alt": "Close-up of the fabric"
         }
       ]
     },
     {
       "id": "12347",
+      "type": "lowerbody",
       "url": "https://www.prettylittlething.com/light-blue-wash-asymmetric-waistband-baggy-low-rise-thigh-split-boyfriend-jeans.html",
       "name": "Indigo Vintage Wash Belted Seam Front Flare Jeans",
       "description": "Add some seriously chic vibes to your new season wardrobe with these jeans. Featuring an indigo vintage wash material with a seam front design and a flared fit. These jeans are perfect for styling the matching jacket and high heels.",
@@ -121,7 +143,11 @@
           "hex": "#FFFFFF"
         }
       ],
-      "sizes": ["S", "M", "L"],
+      "sizes": [
+        "S",
+        "M",
+        "L"
+      ],
       "pricing": {
         "currency": "USD",
         "regular_price": 80.00,
@@ -149,6 +175,10 @@
         },
         {
           "url": "https://firebasestorage.googleapis.com/v0/b/trend-vr-demo.appspot.com/o/clothes%2Fjeans%2Fdark-blue%2Fdark-blue-3.jpg?alt=media&token=14a10b00-d581-4c8d-baff-2d140ffaca62",
+          "alt": "Close-up of the fabric"
+        },
+        {
+          "url": "https://firebasestorage.googleapis.com/v0/b/trend-vr-demo.appspot.com/o/clothes%2Fjeans%2Fdark-blue%2Fdark-blue-AI.jpg?alt=media&token=5720bcf7-27b0-45c7-893d-12bf11e8725e",
           "alt": "Close-up of the fabric"
         }
       ]

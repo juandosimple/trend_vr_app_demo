@@ -2,6 +2,7 @@
   "products": [
     {
       "id": "12345",
+      "type": "upperbody",
       "name": "Stylish T-Shirt",
       "description": "A stylish t-shirt made from 100% organic cotton. Perfect for casual wear.",
       "colors": [
@@ -52,6 +53,7 @@
     },
     {
       "id": "12346",
+      "type": "upperbody",
       "name": "Casual Jeans",
       "description": "Comfortable and stylish jeans made from high-quality denim.",
       "colors": [
@@ -102,6 +104,7 @@
     },
     {
       "id": "12347",
+      "type": "upperbody",
       "name": "Elegant Dress",
       "description": "An elegant evening dress perfect for special occasions.",
       "colors": [

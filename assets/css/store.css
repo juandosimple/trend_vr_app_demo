@@ -1,7 +1,5 @@
-.container {
-    padding-top: 54px;
-    padding-bottom: 57px;
-}
-.container iframe{
+ iframe{
     height: calc(100vh - 111px);
+    width: 100%;
+    margin-top: 55px;
 }

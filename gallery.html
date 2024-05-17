@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,77 +15,87 @@
     <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
 
     <style>
-    #preloader {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    #imageContainer {
-        width: 100%;
-        min-height: 200px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    #imageContainer img {
-        max-width: 100%;
-        width: 250px;
-        margin: 1rem 0;
-        background: #fff;
-        border-radius: 5px;
-        padding: 1rem;
-    }
-    .title {
-        text-align: center;
-        width: 100%;
-        color: #fff;
-    }
-    .change-image {
-        width: 100%;
-        background: #252525;
-        padding: 1rem;
-        border-radius: 5px;
-        color: #fff;
-        text-decoration: none;
-        text-align: center;
-        margin: 1rem;
-    }
-    .empty-images {
-        flex-direction: column;
-        width: 100%;
-        justify-content: center;
-        display: flex;
-        align-items: center;
-    }
-    .empty-images p {
-        font-weight: 400;
-        color: #ccc;
-        font-size: 1.2rem;
-        text-align: center;
-        padding: 0 1rem;
-        margin: 0;
-    }
-    .empty-images span {
-        color: #9d9d9d;
-    margin-top: 1rem;
-    text-align: center;
-    }
-    #uploadPreloader {
-        display: none;
-        justify-content: center;
-        align-items: center;
-        margin-top: 1rem;
-    }
-    #successMessage {
-        display: none;
-    text-align: center;
-    color: white;
-    margin-top: 1rem;
-    background: #509b50;
-    border-radius: 5px;
-    padding: 1rem;
-    font-weight: bold;
-    }
+        #preloader {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #imageContainer {
+            width: 100%;
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        #imageContainer img {
+            max-width: 50%;
+            width: 250px;
+            margin: 0;
+            border-radius: 14px;
+            padding: .5rem;
+            overflow: hidden;
+        }
+
+        .title {
+            text-align: center;
+            width: 100%;
+            color: #fff;
+        }
+
+        .change-image {
+            width: 100%;
+            background: #252525;
+            padding: 1rem;
+            border-radius: 5px;
+            color: #fff;
+            text-decoration: none;
+            text-align: center;
+            margin: 1rem;
+        }
+
+        .empty-images {
+            flex-direction: column;
+            width: 100%;
+            justify-content: center;
+            display: flex;
+            align-items: center;
+        }
+
+        .empty-images p {
+            font-weight: 400;
+            color: #ccc;
+            font-size: 1.2rem;
+            text-align: center;
+            padding: 0 1rem;
+            margin: 0;
+        }
+
+        .empty-images span {
+            color: #9d9d9d;
+            margin-top: 1rem;
+            text-align: center;
+        }
+
+        #uploadPreloader {
+            display: none;
+            justify-content: center;
+            align-items: center;
+            margin-top: 1rem;
+        }
+
+        #successMessage {
+            display: none;
+            text-align: center;
+            color: white;
+            margin-top: 1rem;
+            background: #509b50;
+            border-radius: 5px;
+            padding: 1rem;
+            font-weight: bold;
+        }
     </style>
     <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-storage.js"></script>
@@ -103,35 +114,36 @@
         function displayImages() {
             const userId = localStorage.getItem('userID');
             const listRef = storage.ref(`users/${userId}/generated-images`);
-            listRef.listAll().then(function(res) {
+            listRef.listAll().then(function (res) {
                 if (res.items.length === 0) {
                     document.getElementById('preloader').style.display = 'none';
                     document.getElementById('imageContainer').style.display = 'none';
                     document.querySelector('.empty-images').style.display = 'flex';
                 } else {
                     document.querySelector('.empty-images').style.display = 'none';
-                    res.items.forEach(function(imageRef) {
+                    res.items.forEach(function (imageRef) {
                         displayImage(imageRef);
                     });
                 }
-            }).catch(function(error) {
+            }).catch(function (error) {
                 console.log("Error fetching images:", error);
             });
         }
 
         function displayImage(imageRef) {
-            imageRef.getDownloadURL().then(function(url) {
+            imageRef.getDownloadURL().then(function (url) {
                 var img = document.createElement('img');
                 img.src = url;
                 document.getElementById('imageContainer').appendChild(img);
-            }).catch(function(error) {
+            }).catch(function (error) {
                 console.log("Error displaying image:", error);
-            }).finally(function() {
+            }).finally(function () {
                 document.getElementById('preloader').style.display = 'none';
             });
         }
     </script>
 </head>
+
 <body>
 
     <div class="logo-header">
@@ -141,23 +153,36 @@
         <div class="row justify-content-center vertical-centering" id="container2">
             <div class="col-12 wizard-container__content">
                 <h2 class="title">Your generated images</h2>
-                
+
                 <div class="empty-images" style="display: none;">
-                    <dotlottie-player src="./assets/images/empty.lottie" background="transparent" speed="1" style="width: 300px; height: 300px" direction="1" playmode="normal" loop="" autoplay=""></dotlottie-player>
-                    <p >You don't have any images yet.</p>
-                    <span>Explore any store and choose some clothing. We'll create a personalized image with your selection!</span>
+                    <dotlottie-player src="./assets/images/empty.lottie" background="transparent" speed="1"
+                        style="width: 300px; height: 300px" direction="1" playmode="normal" loop=""
+                        autoplay=""></dotlottie-player>
+                    <p>You don't have any images yet.</p>
+                    <span>Explore any store and choose some clothing. We'll create a personalized image with your
+                        selection!</span>
                 </div>
 
                 <div id="imageContainer">
                     <div id="preloader">
-                        <dotlottie-player src="./assets/images/1715774396840.lottie" 
-                        background="transparent" 
-                        speed="1" 
-                        style="width: 300px; height: 300px" direction="1" playMode="normal" 
-                        loop 
-                        autoplay
-                        ></dotlottie-player>
+                        <dotlottie-player src="./assets/images/1715774396840.lottie" background="transparent" speed="1"
+                            style="width: 300px; height: 300px" direction="1" playMode="normal" loop
+                            autoplay></dotlottie-player>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal for Image View -->
+    <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-fullscreen">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+                <div class="modal-body">
+                    <img id="modalImage" class="img-fluid" src="" alt="Expanded View">
+                    <a href="#">share</a>
                 </div>
             </div>
         </div>
@@ -173,24 +198,48 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
 
-        <script>
-            window.onload = function () {
-              let userID = localStorage.getItem('userID');
-              if (!userID) {
+    <script>
+        window.onload = function () {
+            let userID = localStorage.getItem('userID');
+            if (!userID) {
                 window.location.href = 'index.html';
-              } else {
+            } else {
                 displayImages();
                 console.log('Current User ID:', userID); // Para propósitos de depuración
-              }
-            };
-          </script>
+            }
+        };
+
+
+
+
+
+        function displayImage(imageRef) {
+            imageRef.getDownloadURL().then(function (url) {
+                var img = document.createElement('img');
+                img.src = url;
+                img.classList.add('clickable-image');
+                img.setAttribute('data-bs-toggle', 'modal');
+                img.setAttribute('data-bs-target', '#imageModal');
+                img.onclick = function () {
+                    document.getElementById('modalImage').src = this.src;
+                };
+                document.getElementById('imageContainer').appendChild(img);
+            }).catch(function (error) {
+                console.log("Error displaying image:", error);
+            }).finally(function () {
+                document.getElementById('preloader').style.display = 'none';
+            });
+        }
+
+    </script>
 
 
     <!-- Feather Icons -->
     <script src="https://unpkg.com/feather-icons"></script>
     <script>
-    feather.replace();
+        feather.replace();
     </script>
     <!-- Feather Icons -->
 </body>
+
 </html>
