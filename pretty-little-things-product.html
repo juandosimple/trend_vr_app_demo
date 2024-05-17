@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="./assets/css/pretty.css">
     <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-storage.js"></script>
+    <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
+
     <script>
         // Configuración de Firebase
         var firebaseConfig = {
@@ -29,6 +31,14 @@
 </head>
 
 <body>
+    <!-- Preloader -->
+    <div id="preloader"
+        style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.7); z-index: 9999; align-items: center; justify-content: center;">
+        <dotlottie-player src="./assets/images/image-load.lottie" background="transparent" speed="1"
+        style="width: 300px; height: 300px" direction="1" playmode="normal" loop=""
+        autoplay=""></dotlottie-player>
+    </div>
+
     <div id="product-info"></div>
 
     <!-- Bootstrap JS -->
@@ -38,6 +48,7 @@
     <script>
         function generateProductHTML(product, lastImage) {
             return `
+            <nav aria-label="Breadcrumb" class="breadcrumb capitalize text-small-mobile tracking-widest md:text-base md:tracking-normal md:leading-normal py-4 px-2 whitespace-nowrap"><ol class="overflow-hidden"><li><a class="font-brand-thin hover:underline hover:no-underline lg:hover:underline md:leading-normal text-small-mobile md:text-base" href="/">Home</a></li><li><a class="font-brand-thin hover:underline hover:no-underline lg:hover:underline md:leading-normal text-small-mobile md:text-base" href="/clothing.html">Womens Clothing</a></li><li><a class="font-brand-thin hover:underline hover:no-underline lg:hover:underline md:leading-normal text-small-mobile md:text-base" href="/clothing/tops.html">Tops</a></li><li><a class="font-brand-thin hover:underline hover:no-underline lg:hover:underline md:leading-normal text-small-mobile md:text-base" href="/clothing/tops/nude.html">Nude Tops</a></li><li><a class="font-brand-thin hover:underline hover:no-underline lg:hover:underline md:leading-normal text-small-mobile md:text-base" href="/beige-stripe-structed-linen-look-tailored-waistcoat.html">Bei...</a></li></ol></nav>
                 <div class="product-gallery">
                 ${product.gallery.map(image => `<img src="${image.url}" alt="${image.alt}">`).join('')}
                 </div>
@@ -93,11 +104,28 @@
                 }
             }
 
+            function addGeneratedImageToGallery(imageSrc) {
+                console.log('aslkjdlaskdjsalkdjsaldkjasdlkj')
+                const gallery = document.querySelector('.product-gallery');
+                if (gallery.children.length > 0) {
+                    const firstChild = gallery.children[0];
+                    const newDiv = document.createElement('div');
+                    newDiv.classList.add('generated-container');
+                    newDiv.innerHTML = `<img src="${imageSrc}" alt="Generated Image"><span class="label">Your generated image</span><div class="generated-options"><a href='#'>Share</a><a href='#'>Change model image</a></div>`;
+                    gallery.insertBefore(newDiv, firstChild);
+                }
+            }
+
             function addGenerateListener(type, lastImageUrl) {
                 const generateButton = document.getElementById('generate');
+                const preloader = document.getElementById('preloader');
+                
                 if (generateButton) {
                     generateButton.addEventListener('click', async (event) => {
+                        preloader.style.display = 'flex'; // Muestra el preloader
                         event.preventDefault();
+                        generateButton.style.display = 'none'; // Oculta el botón al hacer clic
+
                         const userImageProfile = localStorage.getItem('userImageProfile');
 
                         const url = "http://4.227.140.241:2000/trendvr-ai-service/vto/generate";
@@ -113,15 +141,14 @@
                             const responseData = await response.json();
                             if (responseData && responseData.image) {
                                 const newImgSrc = `data:image/jpeg;base64,${responseData.image}`;
-                                // Asegúrate de que se envía sin el prefijo al método de carga
                                 uploadImageToFirebase(responseData.image);
-                                const gallery = document.querySelector('.product-gallery');
-                                const newImgElement = document.createElement('img');
-                                newImgElement.src = newImgSrc;
-                                gallery.appendChild(newImgElement);
+                                addGeneratedImageToGallery(newImgSrc);
                             }
                         } catch (error) {
                             console.error('Error:', error);
+                            generateButton.style.display = 'block'; // Muestra el botón de nuevo en caso de error
+                        } finally {
+                            preloader.style.display = 'none'; // Oculta el preloader
                         }
                     });
                 } else {
