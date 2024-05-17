@@ -1,0 +1,154 @@
+{
+  "products": [
+    {
+      "id": "12345",
+      "name": "Stylish T-Shirt",
+      "description": "A stylish t-shirt made from 100% organic cotton. Perfect for casual wear.",
+      "colors": [
+        {
+          "name": "Red",
+          "hex": "#FF0000"
+        },
+        {
+          "name": "Blue",
+          "hex": "#0000FF"
+        },
+        {
+          "name": "Green",
+          "hex": "#00FF00"
+        }
+      ],
+      "sizes": ["S", "M", "L", "XL"],
+      "pricing": {
+        "currency": "USD",
+        "regular_price": 25.00,
+        "sale_price": 20.00
+      },
+      "details": {
+        "material": [
+          "100% Organic Cotton",
+          "Breathable Fabric"
+        ],
+        "care_instructions": [
+          "Machine wash cold",
+          "Do not bleach",
+          "Tumble dry low"
+        ]
+      },
+      "gallery": [
+        {
+          "url": "https://example.com/images/tshirt1.jpg",
+          "alt": "Front view of the t-shirt"
+        },
+        {
+          "url": "https://example.com/images/tshirt2.jpg",
+          "alt": "Back view of the t-shirt"
+        },
+        {
+          "url": "https://example.com/images/tshirt3.jpg",
+          "alt": "Close-up of the fabric"
+        }
+      ]
+    },
+    {
+      "id": "12346",
+      "name": "Casual Jeans",
+      "description": "Comfortable and stylish jeans made from high-quality denim.",
+      "colors": [
+        {
+          "name": "Light Blue",
+          "hex": "#ADD8E6"
+        },
+        {
+          "name": "Dark Blue",
+          "hex": "#00008B"
+        },
+        {
+          "name": "Black",
+          "hex": "#000000"
+        }
+      ],
+      "sizes": ["30", "32", "34", "36", "38"],
+      "pricing": {
+        "currency": "USD",
+        "regular_price": 50.00,
+        "sale_price": 45.00
+      },
+      "details": {
+        "material": [
+          "100% Cotton",
+          "Durable Denim"
+        ],
+        "care_instructions": [
+          "Machine wash warm",
+          "Do not bleach",
+          "Tumble dry medium"
+        ]
+      },
+      "gallery": [
+        {
+          "url": "https://example.com/images/jeans1.jpg",
+          "alt": "Front view of the jeans"
+        },
+        {
+          "url": "https://example.com/images/jeans2.jpg",
+          "alt": "Back view of the jeans"
+        },
+        {
+          "url": "https://example.com/images/jeans3.jpg",
+          "alt": "Close-up of the fabric"
+        }
+      ]
+    },
+    {
+      "id": "12347",
+      "name": "Elegant Dress",
+      "description": "An elegant evening dress perfect for special occasions.",
+      "colors": [
+        {
+          "name": "Black",
+          "hex": "#000000"
+        },
+        {
+          "name": "Red",
+          "hex": "#FF0000"
+        },
+        {
+          "name": "White",
+          "hex": "#FFFFFF"
+        }
+      ],
+      "sizes": ["S", "M", "L"],
+      "pricing": {
+        "currency": "USD",
+        "regular_price": 80.00,
+        "sale_price": 70.00
+      },
+      "details": {
+        "material": [
+          "100% Silk",
+          "Soft and Smooth"
+        ],
+        "care_instructions": [
+          "Dry clean only",
+          "Do not bleach",
+          "Iron on low heat"
+        ]
+      },
+      "gallery": [
+        {
+          "url": "https://example.com/images/dress1.jpg",
+          "alt": "Front view of the dress"
+        },
+        {
+          "url": "https://example.com/images/dress2.jpg",
+          "alt": "Back view of the dress"
+        },
+        {
+          "url": "https://example.com/images/dress3.jpg",
+          "alt": "Close-up of the fabric"
+        }
+      ]
+    }
+  ]
+}

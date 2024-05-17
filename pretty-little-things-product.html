@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Page</title>
+    <style>
+        .product-gallery img {
+            max-width: 100px;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="product-info"></div>
+
+    <script>
+        // Función para obtener los parámetros de la URL
+        function getQueryParams() {
+            const params = new URLSearchParams(window.location.search);
+            return {
+                category: params.get('category'),
+                id: params.get('id')
+            };
+        }
+
+        // Función para cargar el archivo JSON y encontrar el producto por id
+        async function loadProductData() {
+            const { category, id } = getQueryParams();
+            if (category && id) {
+                try {
+                    const response = await fetch(`assets/fakeData/${category}.json`);
+                    const data = await response.json();
+
+                    // Encontrar el producto por id
+                    const product = data.products.find(item => item.id == id);
+
+                    // Mostrar la información del producto
+                    if (product) {
+                        document.getElementById('product-info').innerHTML = `
+                            <h1>${product.name}</h1>
+                            <p>${product.description}</p>
+                            <p>Price: ${product.pricing.currency} $${product.pricing.regular_price}</p>
+                            <p>Sale Price: ${product.pricing.currency} $${product.pricing.sale_price}</p>
+                            <h2>Colors</h2>
+                            <ul>
+                                ${product.colors.map(color => `<li>${color.name} (${color.hex})</li>`).join('')}
+                            </ul>
+                            <h2>Sizes</h2>
+                            <ul>
+                                ${product.sizes.map(size => `<li>${size}</li>`).join('')}
+                            </ul>
+                            <h2>Details</h2>
+                            <ul>
+                                ${product.details.material.map(material => `<li>${material}</li>`).join('')}
+                            </ul>
+                            <h2>Care Instructions</h2>
+                            <ul>
+                                ${product.details.care_instructions.map(instruction => `<li>${instruction}</li>`).join('')}
+                            </ul>
+                            <h2>Gallery</h2>
+                            <div class="product-gallery">
+                                ${product.gallery.map(image => `<img src="${image.url}" alt="${image.alt}">`).join('')}
+                            </div>
+                        `;
+                    } else {
+                        document.getElementById('product-info').innerHTML = `<p>Product not found</p>`;
+                    }
+                } catch (error) {
+                    console.error('Error loading JSON file:', error);
+                    document.getElementById('product-info').innerHTML = `<p>Error loading product data</p>`;
+                }
+            } else {
+                document.getElementById('product-info').innerHTML = `<p>Invalid parameters</p>`;
+            }
+        }
+
+        // Llamar a la función para cargar los datos del producto
+        loadProductData();
+    </script>
+</body>
+</html>

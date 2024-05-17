@@ -1,0 +1,157 @@
+{
+  "products": [
+    {
+      "id": "12345",
+      "url":"https://www.prettylittlething.com/prettylittlething-black-embroidered-oversized-hoodie.html",
+      "name": "Beige Stripe Structed Linen Look Tailored Waistcoat",
+      "description": "A stylish t-shirt made from 100% organic cotton. Perfect for casual wear.",
+      "colors": [
+        {
+          "name": "Red",
+          "hex": "#FF0000"
+        },
+        {
+          "name": "Blue",
+          "hex": "#0000FF"
+        },
+        {
+          "name": "Green",
+          "hex": "#00FF00"
+        }
+      ],
+      "sizes": ["S", "M", "L", "XL"],
+      "pricing": {
+        "currency": "USD",
+        "regular_price": 25.00,
+        "sale_price": 20.00
+      },
+      "details": {
+        "material": [
+          "100% Organic Cotton",
+          "Breathable Fabric"
+        ],
+        "care_instructions": [
+          "Machine wash cold",
+          "Do not bleach",
+          "Tumble dry low"
+        ]
+      },
+      "gallery": [
+        {
+          "url": "https://firebasestorage.googleapis.com/v0/b/trend-vr-demo.appspot.com/o/clothes%2Ftop-1.jpg?alt=media&token=0f6a6885-e834-4020-8068-a38f95249ca4",
+          "alt": "Front view of the t-shirt"
+        },
+        {
+          "url": "https://firebasestorage.googleapis.com/v0/b/trend-vr-demo.appspot.com/o/clothes%2Ftop-1a.jpg?alt=media&token=4bd6553f-962b-4d23-9e05-f486ba5f31ba",
+          "alt": "Back view of the t-shirt"
+        },
+        {
+          "url": "https://firebasestorage.googleapis.com/v0/b/trend-vr-demo.appspot.com/o/clothes%2Ftop-1b.jpg?alt=media&token=8ddaed5c-2e2a-4942-af8e-b9514d466afc",
+          "alt": "Close-up of the fabric"
+        }
+      ]
+    },
+    {
+      "id": "12346",
+      "url":"https://www.prettylittlething.com/black-bow-detail-hook-eye-long-sleeve-top.html",
+      "name": "Premium White Linen Look Button Up One Shoulder Top",
+      "description": "Comfortable and stylish jeans made from high-quality denim.",
+      "colors": [
+        {
+          "name": "Light Blue",
+          "hex": "#ADD8E6"
+        },
+        {
+          "name": "Dark Blue",
+          "hex": "#00008B"
+        },
+        {
+          "name": "Black",
+          "hex": "#000000"
+        }
+      ],
+      "sizes": ["30", "32", "34", "36", "38"],
+      "pricing": {
+        "currency": "USD",
+        "regular_price": 50.00,
+        "sale_price": 45.00
+      },
+      "details": {
+        "material": [
+          "100% Cotton",
+          "Durable Denim"
+        ],
+        "care_instructions": [
+          "Machine wash warm",
+          "Do not bleach",
+          "Tumble dry medium"
+        ]
+      },
+      "gallery": [
+        {
+          "url": "https://firebasestorage.googleapis.com/v0/b/trend-vr-demo.appspot.com/o/clothes%2Ftop-2.jpg?alt=media&token=ac6f2b40-2276-45c1-8007-0cf1f899814f",
+          "alt": "Front view of the jeans"
+        },
+        {
+          "url": "https://firebasestorage.googleapis.com/v0/b/trend-vr-demo.appspot.com/o/clothes%2Ftop-2.jpg?alt=media&token=ac6f2b40-2276-45c1-8007-0cf1f899814f",
+          "alt": "Back view of the jeans"
+        },
+        {
+          "url": "https://firebasestorage.googleapis.com/v0/b/trend-vr-demo.appspot.com/o/clothes%2Ftop-2.jpg?alt=media&token=ac6f2b40-2276-45c1-8007-0cf1f899814f",
+          "alt": "Close-up of the fabric"
+        }
+      ]
+    },
+    {
+      "id": "12347",
+      "url":"https://www.prettylittlething.com/dark-blue-premium-linen-look-halter-crop-top.html",
+      "name": "White Cotton Ruched Bow Shirt",
+      "description": "An elegant evening dress perfect for special occasions.",
+      "colors": [
+        {
+          "name": "Black",
+          "hex": "#000000"
+        },
+        {
+          "name": "Red",
+          "hex": "#FF0000"
+        },
+        {
+          "name": "White",
+          "hex": "#FFFFFF"
+        }
+      ],
+      "sizes": ["S", "M", "L"],
+      "pricing": {
+        "currency": "USD",
+        "regular_price": 80.00,
+        "sale_price": 70.00
+      },
+      "details": {
+        "material": [
+          "100% Silk",
+          "Soft and Smooth"
+        ],
+        "care_instructions": [
+          "Dry clean only",
+          "Do not bleach",
+          "Iron on low heat"
+        ]
+      },
+      "gallery": [
+        {
+          "url": "https://firebasestorage.googleapis.com/v0/b/trend-vr-demo.appspot.com/o/clothes%2Ftop-3.jpg?alt=media&token=2aaf3a3a-5905-45fe-9c53-bfdc5f1b96cb",
+          "alt": "Front view of the dress"
+        },
+        {
+          "url": "https://firebasestorage.googleapis.com/v0/b/trend-vr-demo.appspot.com/o/clothes%2Ftop-3.jpg?alt=media&token=2aaf3a3a-5905-45fe-9c53-bfdc5f1b96cb",
+          "alt": "Back view of the dress"
+        },
+        {
+          "url": "https://firebasestorage.googleapis.com/v0/b/trend-vr-demo.appspot.com/o/clothes%2Ftop-3.jpg?alt=media&token=2aaf3a3a-5905-45fe-9c53-bfdc5f1b96cb",
+          "alt": "Close-up of the fabric"
+        }
+      ]
+    }
+  ]
+}
