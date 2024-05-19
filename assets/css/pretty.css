@@ -153,3 +153,8 @@
     justify-content: space-around;
     margin-top: 1rem;
 }
+
+.breadcrumb ol li a::after{
+    content:'/';
+    margin-left:0.5rem;
+}
