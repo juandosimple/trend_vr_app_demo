@@ -1,6 +1,6 @@
 /* Header */
 body {
-    background-color: #5d5d5d;
+    background-color: #fff;
 }
 
 .logo-header {
@@ -23,7 +23,7 @@ body {
 
 /* Footer */
 .wizard-footer {
-    background-color: #252525;
+    background-color: #827F76;
     width: 100%;
     left: 0;
     padding: 1rem .5rem;
