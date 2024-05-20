@@ -50,9 +50,7 @@ body {
     width: 100%;
     display: block;
     text-align: center;
-    color: #fff;
-    text-shadow: 1px 1px 10px #000000c9;
-
+    color: #3a3a3a;
 }
 
 .wizard-container__content .subtitle {
