@@ -76,9 +76,10 @@
     text-decoration: none;
     display: block;
     text-align: center;
-    margin-bottom: 1rem;
+    width: 100%;
     font-family: "Syne", sans-serif;
-
+    max-width: 140px;
+    margin: 0 auto 1rem auto;
 }
 
 
