@@ -1,0 +1,147 @@
+{
+    "status": "success",
+    "data": [
+      {
+        "userID": "1",
+        "userName": "Starlight",
+        "name": "Alice Smith",
+        "userVotes": 432,
+        "userImage": "https://firebasestorage.googleapis.com/v0/b/trend-vr-demo.appspot.com/o/users%2Fid_rje4snp74%2Fgenerated-images%2F1716378125600.jpeg?alt=media&token=db052d03-4c6a-4eff-be74-d4a7970575c5",
+        "date": "2024-05-22",
+        "imageScore": "Excellent"
+      },
+      {
+        "userID": "5",
+        "userName": "LunaDream",
+        "name": "Ava Davis",
+        "userVotes": 310,
+        "userImage": "https://firebasestorage.googleapis.com/v0/b/trend-vr-demo.appspot.com/o/users%2Fid_49cqsa48k%2Fgenerated-images%2F1716379651422.jpeg?alt=media&token=45067db6-4581-4a65-8642-b8d2ed4b1fd3",
+        "date": "2024-05-22",
+        "imageScore": "Excellent"
+      },
+      {
+        "userID": "5",
+        "userName": "LunaDream",
+        "name": "Ava Davis",
+        "userVotes": 275,
+        "userImage": "https://firebasestorage.googleapis.com/v0/b/trend-vr-demo.appspot.com/o/users%2Fid_49cqsa48k%2Fgenerated-images%2F1716379709949.jpeg?alt=media&token=1458b2e6-8c1f-4b0b-a6ac-cfcb3737baca",
+        "date": "2024-05-22",
+        "imageScore": "Excellent"
+      },
+      {
+        "userID": "1",
+        "userName": "Starlight",
+        "name": "Alice Smith",
+        "userVotes": 230,
+        "userImage": "https://firebasestorage.googleapis.com/v0/b/trend-vr-demo.appspot.com/o/users%2Fid_rje4snp74%2Fgenerated-images%2F1716378835139.jpeg?alt=media&token=f2b8c93f-be20-497b-b462-c28511e816f9",
+        "date": "2024-05-22",
+        "imageScore": "Excellent"
+      },
+      {
+        "userID": "14",
+        "userName": "RainbowMist",
+        "name": "Sofia Jackson",
+        "userVotes": 145,
+        "userImage": "https://example.com/user14.jpg",
+        "date": "2024-05-22",
+        "imageScore": "Excellent"
+      },
+      {
+        "userID": "7",
+        "userName": "MagicWanderer",
+        "name": "Mia Martinez",
+        "userVotes": 143,
+        "userImage": "https://example.com/user7.jpg",
+        "date": "2024-05-22",
+        "imageScore": "Average"
+      },
+      {
+        "userID": "13",
+        "userName": "SilverMoon",
+        "name": "Ella Thomas",
+        "userVotes": 134,
+        "userImage": "https://example.com/user13.jpg",
+        "date": "2024-05-22",
+        "imageScore": "Excellent"
+      },
+      {
+        "userID": "12",
+        "userName": "MoonlitPath",
+        "name": "Abigail Anderson",
+        "userVotes": 123,
+        "userImage": "https://example.com/user12.jpg",
+        "date": "2024-05-22",
+        "imageScore": "Excellent"
+      },
+      {
+        "userID": "11",
+        "userName": "WhisperingWind",
+        "name": "Evelyn Taylor",
+        "userVotes": 111,
+        "userImage": "https://example.com/user11.jpg",
+        "date": "2024-05-22",
+        "imageScore": "Average"
+      },
+      {
+        "userID": "15",
+        "userName": "BlossomBreeze",
+        "name": "Scarlett Lee",
+        "userVotes": 156,
+        "userImage": "https://example.com/user15.jpg",
+        "date": "2024-05-22",
+        "imageScore": "Excellent"
+      },
+      {
+        "userID": "2",
+        "userName": "MoonGazer",
+        "name": "Sophia Johnson",
+        "userVotes": 98,
+        "userImage": "https://firebasestorage.googleapis.com/v0/b/trend-vr-demo.appspot.com/o/users%2Fid_ek2j7mwfw%2Fgenerated-images%2F1716376803879.jpeg?alt=media&token=510bf9d5-7aec-4eb3-8663-09829732623a",
+        "date": "2024-05-22",
+        "imageScore": "Excellent"
+      },
+      {
+        "userID": "10",
+        "userName": "DreamChaser",
+        "name": "Harper Moore",
+        "userVotes": 98,
+        "userImage": "https://example.com/user10.jpg",
+        "date": "2024-05-22",
+        "imageScore": "Average"
+      },
+      {
+        "userID": "6",
+        "userName": "SunsetGLow",
+        "name": "Isabella Garcia",
+        "userVotes": 56,
+        "userImage": "https://example.com/user6.jpg",
+        "date": "2024-05-22",
+        "imageScore": "Average"
+      },
+      {
+        "userID": "9",
+        "userName": "MysticRiver",
+        "name": "Amelia Hernandez",
+        "userVotes": 50,
+        "userImage": "https://example.com/user9.jpg",
+        "date": "2024-05-22",
+        "imageScore": "Low"
+      },
+      {
+        "userID": "3",
+        "userName": "CrystalRose",
+        "name": "Emma Brown",
+        "userVotes": 45,
+        "userImage": "https://firebasestorage.googleapis.com/v0/b/trend-vr-demo.appspot.com/o/users%2Fid_72y69rgle%2Fgenerated-images%2F1715970432148.jpeg?alt=media&token=7de116ff-9897-44f6-9ecf-6d646656ebca",
+        "date": "2024-05-22",
+        "imageScore": "Excellent"
+      }
+    ],
+    "metadata": {
+      "totalItems": 15,
+      "itemsPerPage": 15,
+      "currentPage": 1,
+      "totalPages": 1
+    }
+  }
+  

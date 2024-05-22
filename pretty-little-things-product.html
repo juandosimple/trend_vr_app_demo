@@ -254,6 +254,7 @@
                             if (responseData && responseData.image && responseData.score) {
                                 const newImgSrc = `data:image/jpeg;base64,${responseData.image}`;
                                 const score = responseData.score; // Suponiendo que el score es directamente utilizable
+                                uploadImageToFirebase(responseData.image);
                                 addGeneratedImageToGallery(newImgSrc, score);
                             }
                         } catch (error) {
