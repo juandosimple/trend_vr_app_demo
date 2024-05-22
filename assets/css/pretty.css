@@ -81,27 +81,6 @@
     max-width: 140px;
     margin: 0 auto 1rem auto;
 }
-
-
-.breadcrumb {
-    padding: 0 !important
-}
-
-.breadcrumb ol {
-    display: flex;
-    justify-content: space-around;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    width: 100%;
-}
-
-.breadcrumb ol li a {
-    text-decoration: none;
-    font-size: .8rem;
-    color: #3a3a3a
-}
-
 .product-gallery::-webkit-scrollbar {
     display: none;
 }
@@ -114,19 +93,7 @@
     padding: 0;
 }
 
-.product-gallery .generated-container span.label {
-    top: 40px;
-    position: absolute;
-    left: -80px;
-    transform: rotate(-45deg);
-    border: 0;
-    background: #252525;
-    color: #fff;
-    font-size: .8rem;
-    padding: .3rem 1rem;
-    width: 260px;
-    text-align: center;
-}
+
 
 .generated-container {
     bottom: 0;
@@ -149,15 +116,61 @@
 
 }
 
+.breadcrumb ol{
+    display: flex;
+    list-style: none;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0 .5rem;
+    align-items: center;
+}
 
-.generated-options{
+.breadcrumb ol li a{
+    text-decoration: none;
+    color:#252525;
+    font-size: .8rem;
+}
+
+.breadcrumb ol li:last-child a{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    width: 40%;
+}
+
+.breadcrumb ol li a::after{
+    content:'/';
+    margin-left: 0.3rem;
+    margin-right: 0.3rem;
+}
+
+.product-gallery .api-generated_container #ai-score_label {
+    top: 40px;
+    position: absolute;
+    left: -80px;
+    transform: rotate(-45deg);
+    border: 0;
+    background: #252525;
+    color: #fff;
+    font-size: .8rem;
+    padding: .3rem 1rem;
+    width: 260px;
+    text-align: center;
+}
+
+.product-gallery .generated-options{
     width: 100%;
     display: flex;
     justify-content: space-around;
     margin-top: 1rem;
 }
 
-.breadcrumb ol li a::after{
-    content:'/';
-    margin-left:0.5rem;
+.api-generated_container{
+    flex-direction: column;
+}
+
+.generated-options a {
+    color: #3a3a3a;
 }

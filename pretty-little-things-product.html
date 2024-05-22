@@ -34,6 +34,7 @@
 </head>
 
 <body>
+    <!-- Navigation -->
     <nav class="navbar navbar-expand-lg bg-body-tertiary" id="main-nav">
         <div class="container-fluid" style="justify-content: flex-start;">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
@@ -74,273 +75,83 @@
             </div>
         </div>
     </nav>
+    <a class="nav-link" href="#" onclick="window.history.go(-1); return false;"
+        style=" display: flex; align-items: center; margin-left: 5px; margin-bottom: 10px; "><img
+            src="./assets/images/back-arrow.svg" style="width: 20px;" alt=""> <span style=" margin-left: 5px; ">Go
+            Back</span></a>
+    <div id="product-info"></div>
+    <!-- Navigation -->
+
     <!-- Preloader -->
     <div id="preloader"
         style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.7); z-index: 9999; align-items: center; justify-content: center;">
         <dotlottie-player src="./assets/images/image-load.lottie" background="transparent" speed="1"
             style="width: 300px; height: 300px" direction="1" playmode="normal" loop="" autoplay=""></dotlottie-player>
     </div>
-    <a class="nav-link" href="#" onclick="window.history.go(-1); return false;"
-        style=" display: flex; align-items: center; margin-left: 5px; margin-bottom: 10px; "><img
-            src="./assets/images/back-arrow.svg" style="width: 20px;" alt=""> <span style=" margin-left: 5px; ">Go
-            Back</span></a>
+    <!-- Preloader -->
 
-    <div id="product-info"></div>
+
+    <!-- Breadcrumbs -->
+    <nav aria-label="Breadcrumb" class="breadcrumb">
+        <ol class="overflow-hidden">
+            <li><a href="./search.html">Home</a></li>
+            <li><a href="./store.html" id="nav-category"></a></li>
+            <li><a href="./pretty-little-things-product.html" id="nav-product"></a></li>
+        </ol>
+    </nav>
+    <!-- Breadcrumbs -->
+
+    <!-- Product -->
+    <div class="product-gallery" id="api-gallery">
+        <!-- Existing product images will be added here -->
+        <div class="api-generated_container" style="display: none;">
+            <div id="preloader"
+                style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.7); z-index: 9999; align-items: center; justify-content: center;">
+                <dotlottie-player src="./assets/images/image-load.lottie" background="transparent" speed="1"
+                    style="width: 300px; height: 300px" direction="1" playmode="normal" loop="" autoplay=""></dotlottie-player>
+            </div>
+            <img src="#" id="ai-generated_image" style="display: none;">
+            <span class="label" id="ai-score_label" style="display: none;"></span>
+            <div class="generated-options" style="display: none;">
+                <a href='#' id="ai-action_share"><i data-feather="share"></i></a>
+                <a href='#' id="ai-action_download"><i data-feather="download"></i></a>
+                <a href='#' id="ai-action_retry"><i data-feather="refresh-ccw"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="product-content" id="api-content">
+        <a href="#" id="generate" class="generate-ai">Try it on</a>
+        <p><span id="api-content_price"></span><del id="api-content_discount"></del></p>
+        <h1 id="api-content_name"></h1>
+        <p id="api-content_description"></p>
+        <h2>Colors</h2>
+        <ul id="api-content_colors">
+        </ul>
+        <h2>Sizes</h2>
+        <ul id="api-content_sizes">
+        </ul>
+        <h2>Details</h2>
+        <ul id="api-content_details">
+        </ul>
+        <h2>Care Instructions</h2>
+        <ul id="api-content_instructions">
+        </ul>
+    </div>
+    <!-- Product -->
+
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
+
+
+    <script src="./assets/js/ai-generate.js"></script>
+    <!-- Feather Icons -->
+    <script src="https://unpkg.com/feather-icons"></script>
     <script>
-        function generateProductHTML(product, lastImage) {
-            return `
-            <nav aria-label="Breadcrumb" class="breadcrumb capitalize text-small-mobile tracking-widest md:text-base md:tracking-normal md:leading-normal py-4 px-2 whitespace-nowrap"><ol class="overflow-hidden"><li><a class="font-brand-thin hover:underline hover:no-underline lg:hover:underline md:leading-normal text-small-mobile md:text-base" href="/">Home</a></li><li><a class="font-brand-thin hover:underline hover:no-underline lg:hover:underline md:leading-normal text-small-mobile md:text-base" href="/clothing.html">Womens Clothing</a></li><li><a class="font-brand-thin hover:underline hover:no-underline lg:hover:underline md:leading-normal text-small-mobile md:text-base" href="/clothing/tops.html">Tops</a></li><li><a class="font-brand-thin hover:underline hover:no-underline lg:hover:underline md:leading-normal text-small-mobile md:text-base" href="/clothing/tops/nude.html">Nude Tops</a></li><li><a class="font-brand-thin hover:underline hover:no-underline lg:hover:underline md:leading-normal text-small-mobile md:text-base" href="/beige-stripe-structed-linen-look-tailored-waistcoat.html">Bei...</a></li></ol></nav>
-                <div class="product-gallery">
-                ${product.gallery.map(image => `<img src="${image.url}" alt="${image.alt}">`).join('')}
-                </div>
-                <div class="product-content">
-                    <a href="#" id="generate" class="generate-ai">Try it on</a>
-                    <p>${product.pricing.currency} $${product.pricing.regular_price}</del>
-                    <del>${product.pricing.currency} $${product.pricing.sale_price}</p>
-                    <h1>${product.name}</h1>
-                    <p>${product.description}</p>
-                    <h2>Colors</h2>
-                    <ul>
-                    ${product.colors.map(color => `<li>${color.name} (${color.hex})</li>`).join('')}
-                    </ul>
-                    <h2>Sizes</h2>
-                    <ul>
-                    ${product.sizes.map(size => `<li>${size}</li>`).join('')}
-                    </ul>
-                    <h2>Details</h2>
-                    <ul>
-                    ${product.details.material.map(material => `<li>${material}</li>`).join('')}
-                    </ul>
-                    <h2>Care Instructions</h2>
-                    <ul>
-                    ${product.details.care_instructions.map(instruction => `<li>${instruction}</li>`).join('')}
-                    </ul>
-                </div>
-
-    `;
-        }
-
-        async function generateImage(lastImageUrl, type) {
-            const preloader = document.getElementById('preloader');
-            const generateButton = document.getElementById('generate');
-            preloader.style.display = 'flex'; // Muestra el preloader
-            generateButton.style.display = 'none'; // Oculta el botón al hacer clic
-
-            const userImageProfile = localStorage.getItem('userImageProfile');
-            const url = "http://4.227.140.241:2000/trendvr-ai-service/vto/generate";
-            const headers = { "Content-Type": "application/json" };
-            const data = JSON.stringify({
-                human_image_url: userImageProfile,
-                cloth_image_url: lastImageUrl,
-                body_part: type
-            });
-
-            try {
-                const response = await fetch(url, { method: 'POST', headers: headers, body: data });
-                const responseData = await response.json();
-                if (responseData && responseData.image && responseData.score) {
-                    const newImgSrc = `data:image/jpeg;base64,${responseData.image}`;
-                    const score = responseData.score;
-                    addGeneratedImageToGallery(newImgSrc, score);
-                }
-            } catch (error) {
-                console.error('Error:', error);
-                generateButton.style.display = 'block'; // Muestra el botón de nuevo en caso de error
-            } finally {
-                preloader.style.display = 'none'; // Oculta el preloader
-            }
-        }
-
-        document.addEventListener('DOMContentLoaded', function () {
-            async function loadProductData() {
-                const { category, type, id } = getQueryParams();
-                if (category && type && id) {
-                    try {
-                        const response = await fetch(`assets/fakeData/${category}.json`);
-                        const data = await response.json();
-                        const product = data.products.find(item => item.id == id);
-                        if (product) {
-                            const galleryLength = product.gallery.length;
-                            const lastImage = galleryLength > 0 ? product.gallery[galleryLength - 1].url : '';
-                            document.getElementById('product-info').innerHTML = generateProductHTML(product, lastImage);
-                            addGenerateListener(type, lastImage);  // Llamar a la función para añadir el listener
-                        } else {
-                            document.getElementById('product-info').innerHTML = `<p>Product not found</p>`;
-                        }
-                    } catch (error) {
-                        console.error('Error loading JSON file:', error);
-                        document.getElementById('product-info').innerHTML = `<p>Error loading product data</p>`;
-                    }
-                } else {
-                    document.getElementById('product-info').innerHTML = `<p>Invalid parameters</p>`;
-                }
-            }
-
-            document.addEventListener('click', function (event) {
-                console.log("clicked")
-                const target = event.target;
-                const parent = target.closest('div.generated-options');
-                
-                if (parent) {
-                    console.log("clicked2")
-                    if (target.id === 'ai-action-retry') {
-                        console.log("clicked3")
-                        const lastImage = "URL de la última imagen aquí";  // Debes obtener la última URL de la imagen
-                        const type = "tipo de prenda aquí";  // Debes obtener el tipo de prenda
-                        generateImage(lastImage, type);
-                    } else if (target.id === 'ai-action-download') {
-                        console.log("clicked4")
-                        downloadImage(target.getAttribute('data-image-url'));
-                    }
-                }
-            });
-
-            function addGeneratedImageToGallery(imageSrc, score) {
-                // Convertir la puntuación a porcentaje (score de 1 a 6)
-                const scorePercentage = (score / 6) * 100;
-                const scoreRounded = Math.round(scorePercentage); // Redondea al entero más cercano
-
-                console.log('Adding generated image to gallery with score:', scoreRounded);
-                const gallery = document.querySelector('.product-gallery');
-                if (gallery.children.length > 0) {
-                    const firstChild = gallery.children[0];
-                    const newDiv = document.createElement('div');
-                    newDiv.classList.add('generated-container');
-                    newDiv.innerHTML = `
-            <img src="${imageSrc}" alt="Generated Image">
-            <span class="label" id="score-label">Your score: ${scoreRounded}%</span>
-            <div class="generated-options">
-                <a href='#' id="ai-action-share"><i data-feather="share"></i></a>
-                <a href='#' id="ai-action-download" onclick="downloadImage('${imageSrc}')"><i data-feather="download"></i></a>
-                <a href='#' id="ai-action-retry"><i data-feather="refresh-ccw"></i></a>
-            </div>
-        `;
-                    gallery.insertBefore(newDiv, firstChild);
-                    feather.replace(); // Esto reinitializa los íconos
-                }
-            }
-
-
-
-
-            function addGenerateListener(type, lastImageUrl) {
-                const generateButton = document.getElementById('generate');
-                const preloader = document.getElementById('preloader');
-
-                if (generateButton) {
-                    generateButton.addEventListener('click', async (event) => {
-                        preloader.style.display = 'flex'; // Muestra el preloader
-                        event.preventDefault();
-                        generateButton.style.display = 'none'; // Oculta el botón al hacer clic
-
-                        const userImageProfile = localStorage.getItem('userImageProfile');
-
-                        const url = "http://4.227.140.241:2000/trendvr-ai-service/vto/generate";
-                        const headers = { "Content-Type": "application/json" };
-                        const data = JSON.stringify({
-                            human_image_url: userImageProfile,
-                            cloth_image_url: lastImageUrl,
-                            body_part: type
-                        });
-
-                        try {
-                            const response = await fetch(url, { method: 'POST', headers: headers, body: data });
-                            const responseData = await response.json();
-                            if (responseData && responseData.image && responseData.score) {
-                                const newImgSrc = `data:image/jpeg;base64,${responseData.image}`;
-                                const score = responseData.score; // Suponiendo que el score es directamente utilizable
-                                uploadImageToFirebase(responseData.image);
-                                addGeneratedImageToGallery(newImgSrc, score);
-                            }
-                        } catch (error) {
-                            console.error('Error:', error);
-                            generateButton.style.display = 'block'; // Muestra el botón de nuevo en caso de error
-                        } finally {
-                            preloader.style.display = 'none'; // Oculta el preloader
-                        }
-                    });
-                } else {
-                    console.error('Generate button not found');
-                }
-            }
-
-
-            function getQueryParams() {
-                const params = new URLSearchParams(window.location.search);
-                return {
-                    category: params.get('category'),
-                    type: params.get('type'),
-                    id: params.get('id')
-                };
-            }
-
-            loadProductData();
-        });
-
-
-        function uploadImageToFirebase(imageBase64) {
-            // Retrieve the userID from localStorage
-            var userId = localStorage.getItem('userID');
-
-            // Check if the userId is available
-            if (!userId) {
-                console.error("No user ID provided");
-                return;
-            }
-
-            // Remove the data URL prefix if present
-            var base64Cleaned = imageBase64.replace(/^data:image\/(png|jpeg|jpg);base64,/, '');
-
-            var byteString;
-            try {
-                byteString = atob(base64Cleaned);
-            } catch (e) {
-                console.error("Failed to decode base64 string:", e);
-                return; // Stops execution if there is an error
-            }
-
-            var ab = new ArrayBuffer(byteString.length);
-            var ia = new Uint8Array(ab);
-            for (var i = 0; i < byteString.length; i++) {
-                ia[i] = byteString.charCodeAt(i);
-            }
-            var blob = new Blob([ab], { type: 'image/jpeg' }); // Ensure the correct type is specified
-
-            var storage = firebase.storage();
-            var storageRef = storage.ref();
-            // Modify the path to include the userId
-            var imageRef = storageRef.child(`users/${userId}/generated-images/${new Date().getTime()}.jpeg`);
-
-            var uploadTask = imageRef.put(blob);
-
-            uploadTask.on('state_changed', function (snapshot) {
-                var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-                console.log('Upload is ' + progress + '% done');
-            }, function (error) {
-                console.error('Upload failed:', error);
-            }, function () {
-                uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
-                    console.log('File available at', downloadURL);
-                });
-            });
-        }
-
-        function downloadImage(imageUrl) {
-            const downloadLink = document.createElement('a');
-            downloadLink.href = imageUrl;
-            downloadLink.download = "descarga.jpg"; // Puedes definir un nombre para el archivo descargado
-            document.body.appendChild(downloadLink);
-            downloadLink.click();
-            document.body.removeChild(downloadLink);
-        }
-
+      feather.replace();
     </script>
-
-</body>
-
+    <!-- Feather Icons -->
 </html>
