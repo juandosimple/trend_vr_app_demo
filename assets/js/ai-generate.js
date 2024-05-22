@@ -119,6 +119,15 @@ function updateGeneratedContent(data) {
         };
     }
 
+    document.getElementById('ai-action_download').addEventListener('click', function() {
+        const link = document.createElement('a');
+        link.href = generatedImage.src;  // Use the src of the generatedImage
+        link.download = `trendvr_snap_id_${Math.floor(Math.random() * 10000)}.jpg`;  // The desired filename
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);  // Clean up by removing the link
+    });
+
     const score = data.score;
     let scoreText = '';
     if (score <= 3) {
@@ -194,6 +203,7 @@ async function generateAI() {
 
 document.getElementById('generate').addEventListener('click', generateAI);
 document.getElementById('ai-action_retry').addEventListener('click', generateAI);
+
 
 // Llama a la función loadProductData cuando el DOM esté completamente cargado
 document.addEventListener('DOMContentLoaded', loadProductData);
