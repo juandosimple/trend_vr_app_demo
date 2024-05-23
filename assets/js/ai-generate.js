@@ -245,7 +245,8 @@ async function generateAI() {
         const bodyPart = product.type;
 
         const response = await fetch(
-            'http://4.227.140.241:2000/trendvr-ai-service/vto/generate',
+            'https://app.trendvr.io/trendvr-ai-service/vto/generate',
+            //'http://4.227.140.241:2000/trendvr-ai-service/vto/generate',
             //'http://localhost:3001/generate', 
             {
                 method: 'POST',
