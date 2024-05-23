@@ -28,6 +28,27 @@
   <meta name="msapplication-TileColor" content="#ffffff">
   <meta name="msapplication-TileImage" content="./assets/images/ms-icon-144x144.png">
   <meta name="theme-color" content="#ffffff">
+  <script>
+    // Función para solicitar pantalla completa
+function goFullscreen() {
+    let elem = document.documentElement; // Puedes cambiar esto a un elemento específico si lo deseas
+    if (elem.requestFullscreen) {
+        elem.requestFullscreen();
+    } else if (elem.mozRequestFullScreen) { // Firefox
+        elem.mozRequestFullScreen();
+    } else if (elem.webkitRequestFullscreen) { // Chrome, Safari y Opera
+        elem.webkitRequestFullscreen();
+    } else if (elem.msRequestFullscreen) { // IE/Edge
+        elem.msRequestFullscreen();
+    }
+}
+
+// Añadir un evento para activar la pantalla completa cuando el usuario interactúe
+document.addEventListener('click', function() {
+    goFullscreen();
+}, { once: true });
+
+  </script>
 </head>
 
 <body>
