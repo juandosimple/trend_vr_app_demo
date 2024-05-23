@@ -168,12 +168,32 @@ function updateGeneratedContent(data) {
     }
 
     document.getElementById('ai-action_download').addEventListener('click', function () {
+        const generatedImage = document.getElementById('ai-generated_image');
+    
+        if (!generatedImage || !generatedImage.src) {
+            console.error('No generated image found');
+            return;
+        }
+    
         const link = document.createElement('a');
-        link.href = generatedImage.src;  // Use the src of the generatedImage
-        link.download = `trendvr_snap_id_${Math.floor(Math.random() * 10000)}.jpg`;  // The desired filename
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);  // Clean up by removing the link
+        link.href = generatedImage.src;
+        link.download = `trendvr_snap_id_${Math.floor(Math.random() * 10000)}.jpg`;
+    
+        // Solución alternativa para iOS y otros navegadores móviles
+        if (navigator.userAgent.match(/(iPad|iPhone|iPod)/i)) {
+            const newWindow = window.open(generatedImage.src, '_blank');
+            if (newWindow) {
+                newWindow.focus();
+                setTimeout(() => newWindow.close(), 500);
+            } else {
+                console.error('Pop-up blocker might be preventing the download');
+            }
+        } else {
+            // Para otros navegadores y dispositivos
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
     });
 
     const score = data.score;
