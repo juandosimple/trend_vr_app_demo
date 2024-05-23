@@ -31,6 +31,54 @@ function loadProductData() {
         .catch(error => console.error("Error loading JSON file:", error));
 }
 
+function uploadImageToFirebase(imageBase64) {
+    // Retrieve the userID from localStorage
+    var userId = localStorage.getItem('userID');
+
+    // Check if the userId is available
+    if (!userId) {
+        console.error("No user ID provided");
+        return;
+    }
+
+    // Remove the data URL prefix if present
+    var base64Cleaned = imageBase64.replace(/^data:image\/(png|jpeg|jpg);base64,/, '');
+
+    var byteString;
+    try {
+        byteString = atob(base64Cleaned);
+    } catch (e) {
+        console.error("Failed to decode base64 string:", e);
+        return; // Stops execution if there is an error
+    }
+
+    var ab = new ArrayBuffer(byteString.length);
+    var ia = new Uint8Array(ab);
+    for (var i = 0; i < byteString.length; i++) {
+        ia[i] = byteString.charCodeAt(i);
+    }
+    var blob = new Blob([ab], { type: 'image/jpeg' }); // Ensure the correct type is specified
+
+    var storage = firebase.storage();
+    var storageRef = storage.ref();
+    // Modify the path to include the userId
+    var imageRef = storageRef.child(`users/${userId}/generated-images/${new Date().getTime()}.jpeg`);
+
+    var uploadTask = imageRef.put(blob);
+
+    uploadTask.on('state_changed', function (snapshot) {
+        var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        console.log('Upload is ' + progress + '% done');
+    }, function (error) {
+        console.error('Upload failed:', error);
+    }, function () {
+        uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
+            console.log('File available at', downloadURL);
+            localStorage.setItem('generatedItem', downloadURL);
+        });
+    });
+}
+
 function updateProductInfo(product) {
     const productName = document.getElementById('api-content_name');
     const productDescription = document.getElementById('api-content_description');
@@ -119,7 +167,7 @@ function updateGeneratedContent(data) {
         };
     }
 
-    document.getElementById('ai-action_download').addEventListener('click', function() {
+    document.getElementById('ai-action_download').addEventListener('click', function () {
         const link = document.createElement('a');
         link.href = generatedImage.src;  // Use the src of the generatedImage
         link.download = `trendvr_snap_id_${Math.floor(Math.random() * 10000)}.jpg`;  // The desired filename
@@ -177,19 +225,19 @@ async function generateAI() {
         const bodyPart = product.type;
 
         const response = await fetch(
-            // 'http://4.227.140.241:2000/trendvr-ai-service/vto/generate', 
-            'http://localhost:3001/generate', 
-        {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                human_image_url: userImageProfile,
-                cloth_image_url: lastImageUrl,
-                body_part: bodyPart
-            })
-        });
+            'http://4.227.140.241:2000/trendvr-ai-service/vto/generate',
+            //'http://localhost:3001/generate', 
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    human_image_url: userImageProfile,
+                    cloth_image_url: lastImageUrl,
+                    body_part: bodyPart
+                })
+            });
 
         if (!response.ok) {
             throw new Error('Network response was not ok');
@@ -198,6 +246,7 @@ async function generateAI() {
         const data = await response.json();
         console.log(data)
         updateGeneratedContent(data);
+        uploadImageToFirebase(data.image);
     } catch (error) {
         console.error('There was a problem with the fetch operation:', error);
         // Optionally, you can show some error message to the user here
@@ -223,10 +272,10 @@ function showLoader(button) {
 // Función para ocultar el loader y habilitar el botón
 function hideLoader(button) {
     button.querySelector('.loader').style.display = 'none';
-    setTimeout(function() {
+    setTimeout(function () {
         document.getElementById('sparkle-share').style.display = 'none';
     }, 1800);
-    setTimeout(function() {
+    setTimeout(function () {
         document.getElementById('ai-action_share-icon').style.display = 'flex';
     }, 2000);
     button.disabled = false;
@@ -236,7 +285,18 @@ function hideLoader(button) {
 async function shareGeneratedImage() {
     const userImageProfile = localStorage.getItem('userImageProfile');
     const product = window.currentProduct;
-    const generatedImageSrc = document.getElementById('ai-generated_image').src;
+
+    // Intenta obtener generatedImageSrc de localStorage
+    let generatedImageSrc = localStorage.getItem('generatedItem');
+
+    // Si no se encuentra en localStorage, obténlo del documento
+    if (!generatedImageSrc) {
+        const generatedImageElement = document.getElementById('ai-generated_image');
+        if (generatedImageElement) {
+            generatedImageSrc = generatedImageElement.src;
+        }
+    }
+
     const scoreLabel = document.getElementById('ai-score_label').textContent;
     const userID = localStorage.getItem('userID'); // Obtener el userID almacenado en el local storage
 
@@ -259,11 +319,12 @@ async function shareGeneratedImage() {
     showLoader(shareButton);
 
     try {
-        const newEntryKey = firebase.database().ref().child('lens').push().key;
-        const updates = {};
-        updates['/lens/' + newEntryKey] = newEntry;
-        
-        await firebase.database().ref().update(updates);
+        // Crear una clave única para la imagen usando una marca de tiempo
+        const imageKey = `image_${Date.now()}`;
+
+        // Insertar el nuevo registro en Firebase usando set() con la clave de usuario y la clave de imagen
+        await firebase.database().ref(`lens/${userID}/${imageKey}`).set(newEntry);
+
         document.getElementById('sparkle-share').style.display = 'block';
         const element = document.getElementById('sparkle-share');
         const computedStyle = window.getComputedStyle(element);
@@ -279,7 +340,9 @@ async function shareGeneratedImage() {
     }
 }
 
-document.getElementById('ai-action_share').addEventListener('click', function(event) {
+
+
+document.getElementById('ai-action_share').addEventListener('click', function (event) {
     event.preventDefault(); // Para evitar que el enlace realice la navegación
     shareGeneratedImage();
 });
