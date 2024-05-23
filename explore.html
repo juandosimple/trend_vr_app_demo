@@ -227,7 +227,6 @@
           }
           return currentData;
         }).then(() => {
-          alert("Voto registrado!");
           getSharedImages(); // Refresh the images to update the vote count
         }).catch((error) => {
           console.error("Error al registrar el voto:", error);
