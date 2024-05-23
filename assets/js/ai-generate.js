@@ -176,7 +176,10 @@ async function generateAI() {
         const lastImageUrl = product.gallery[product.gallery.length - 1].url;
         const bodyPart = product.type;
 
-        const response = await fetch('http://4.227.140.241:2000/trendvr-ai-service/vto/generate', {
+        const response = await fetch(
+            // 'http://4.227.140.241:2000/trendvr-ai-service/vto/generate', 
+            'http://localhost:3001/generate', 
+        {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -207,3 +210,78 @@ document.getElementById('ai-action_retry').addEventListener('click', generateAI)
 
 // Llama a la función loadProductData cuando el DOM esté completamente cargado
 document.addEventListener('DOMContentLoaded', loadProductData);
+
+// BD
+// BD
+// Función para mostrar el loader y deshabilitar el botón
+function showLoader(button) {
+    button.querySelector('.loader').style.display = 'block';
+    document.getElementById('ai-action_share-icon').style.display = 'none';
+    button.disabled = true;
+}
+
+// Función para ocultar el loader y habilitar el botón
+function hideLoader(button) {
+    button.querySelector('.loader').style.display = 'none';
+    setTimeout(function() {
+        document.getElementById('sparkle-share').style.display = 'none';
+    }, 1800);
+    setTimeout(function() {
+        document.getElementById('ai-action_share-icon').style.display = 'flex';
+    }, 2000);
+    button.disabled = false;
+}
+
+
+async function shareGeneratedImage() {
+    const userImageProfile = localStorage.getItem('userImageProfile');
+    const product = window.currentProduct;
+    const generatedImageSrc = document.getElementById('ai-generated_image').src;
+    const scoreLabel = document.getElementById('ai-score_label').textContent;
+    const userID = localStorage.getItem('userID'); // Obtener el userID almacenado en el local storage
+
+    if (!userImageProfile || !generatedImageSrc || !product) {
+        console.error('Faltan datos necesarios para compartir la imagen');
+        return;
+    }
+
+    const newEntry = {
+        userID: userID,
+        userName: "ExampleUserName", // Puedes obtener esto de tu aplicación según corresponda
+        name: "ExampleName", // Puedes obtener esto de tu aplicación según corresponda
+        userVotes: 0, // Inicialmente puede ser 0 o el valor que necesites
+        userImage: generatedImageSrc,
+        date: new Date().toISOString().split('T')[0], // Fecha actual en formato YYYY-MM-DD
+        imageScore: scoreLabel
+    };
+
+    const shareButton = document.getElementById('ai-action_share');
+    showLoader(shareButton);
+
+    try {
+        const newEntryKey = firebase.database().ref().child('lens').push().key;
+        const updates = {};
+        updates['/lens/' + newEntryKey] = newEntry;
+        
+        await firebase.database().ref().update(updates);
+        document.getElementById('sparkle-share').style.display = 'block';
+        const element = document.getElementById('sparkle-share');
+        const computedStyle = window.getComputedStyle(element);
+        const displayProperty = computedStyle.display;
+        console.log(displayProperty);
+
+        console.log('Imagen compartida con éxito');
+        console.log(document.getElementById('sparkle-share'));
+    } catch (error) {
+        console.error('Error al compartir la imagen:', error);
+    } finally {
+        hideLoader(shareButton);
+    }
+}
+
+document.getElementById('ai-action_share').addEventListener('click', function(event) {
+    event.preventDefault(); // Para evitar que el enlace realice la navegación
+    shareGeneratedImage();
+});
+// BD
+// BD

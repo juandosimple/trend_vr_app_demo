@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
   <meta charset="UTF-8" />
@@ -37,6 +37,13 @@
       border-radius: 0;
       padding: 2px;
       overflow: hidden;
+      opacity: 0;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
     }
 
     .title {
@@ -96,6 +103,10 @@
       padding: 1rem;
       font-weight: bold;
     }
+.image-wrapper{
+  opacity: 0;
+}
+
   </style>
   <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-storage.js"></script>
@@ -190,13 +201,10 @@
           <img id="modalImage" class="img-fluid" src="" alt="Expanded View" />
           <div class="modal-actions">
             <a id="whatsappShareButton" href="#">
-              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAABjtJREFUaEPVmXWofFUQxz8/uzsRFVuxCxNUFBuxsLtRUWxUFLs7/rALAztRwe4WxcQWxcJuse7nce5jfuedu7tv330PfgMLu/eeM2dmzsR3ZscxgdO4CVx+xkKBKYHfR8tQbSqwKLA2sBqwCDAfMGMQ/EfgI+Bd4GngEeDNkSo2UgWmBXYDdgWW7kMYFbgauBT4qY/9fbvQ5MAh6TNTPwdne7ydc4Azh+tu/dzA6sCVwEINgv8MvJJc5XvgB2CG9HHPcul7afuHwO7AY70aZbgKHAGcVH0myQ74tlLoeuAm4EXg7w4CTJyU2BrYEZgtW/sPcAJwIvBfN0V6VcBDLwb2zhhqYRW6BPi122GF92YoLX4cMHP2/hpgjy7G6CkGVPKKFKjxjNuBfYGv+hA836LwGshbiXQjsAPwb9MZvdzAycBRgYHMDgXObUHwnMX+VXycV7mPN17T2em84nHdFNi48te7YfCm9E/9VsuMFm2RYinGmc+88SHUSQGv9R1glrDLGDBnjzbtAlwVDjHWFiu5aycFLktBVPPx916jLXngfyGgS9VkUKvYeNSkgPn67eCLQoAlgN+y/bOmAqR1vklB2FdFLRjGYvlagiW+NqUumcOPJgVy628K3JUd4gHPpJxevzoSOK3FW1ofuD/wu7bCUztH/iUFpga+BKZJC7XCsoWichhwRibsx8CCgMHeFgn8Vk3M/qhqzpypug88Kilg3r0unC5YiwFVv3orBVYu6CbAPW1JX0GSbYEbmuQpKaDwKiGJ42evQJv4JpIpznc5pHCNV75hiwpMlbJP7RE3x4JXUuDTqvLOnQQQs4vxcxIC/FJhlokK7/6sXMtDG6tnH8rdF4xi5Z+j5pErMH30rwSojm04UH+ft/DuAuDAPoTstEUkICKoSQBo1hsSAytWmr4QFm7XoepenoBYPPgpYB3AW2iTrMS3BoZ2fWbAIQqsBzwQFq4BPNEgibj+pYyHyNJeoW1aCXguMB1MFLkL5Zoun5qTJoFsB2Ne/jwVPJuYNmlx4I3AcPs6M+UKCN5iChy8qgZpxEn2tbEpsbGps1hbSiwDvBqYbQXcUnIh28Unw0IVMgN0og2Ae7OMdHy1wSalLVoTeDQws0I/WFLA0YgYqKZ9UrfVTRD7AxvySFZps0epKsvXPllk+1035ilZmDRqEpcNjGRyF7IwCcbM85KdmG1dL5TjJ/c8DOyZ5kE1D+PM6/dsa4ntqE3LFx0OOb9S9ID0XoMIdwYyXamQPVtlopXTYuGCAdQL2UUZ1Ln/W7EV0g7OmHk84Kyar8K45qCGAigeWyot9rsxMUAlBbx6gVpNQtiYATopY2XWlQ5uWOS0ogQ/6uXTFWDLAsB7QVYNMci/pMAKaTRSM1Wgw3u5grBmp2rKYEOiQL3SZwHCxD2OWI4JD8arTU39wPsVIlVzyZzu916CLR4szNBa9hLdem/3lQzl6FLIUk///D5/hPZNjPer/PWiIE0/t1BvF56IjTZLIK90IyJggz2HIM6cjg4bHGc6ghykJgWmqILRW5grrbSRsFGx0vZLWnPLKojXqqrowulW9G3TY2mUaPJ4GbDzk75O1h9vgNbpam0ibCakv9LkzLQ3FmSafD7LgMXGqkkBn2tt2zdJC2m5sSCz1J1VItkoHGbq9fwhs9ImBUydrwcGVtRTx0B6XVcstXk4S9xvT1503yYFDJazAhNTq/44mjRPmsitEg4x9oT4TZC+Mb0JlNZNjLSALVzdInrFZhZbzU+SxUbSPlr89O/TQ7qs485hr+7USKUbEAc576/xkHPQU5LACm0hiQVKUOUs/44U7L3e0qSpRpgm87+nxGNipoe6MSspoOUHoGoiwVOcFjfxtNDdlgCcndoH2ULPsrjpjhpCAZ3s5WTsiff9M7ArlRTQ942BkZKp16GseXuyBOQM0ibS38VhJgu/90QlBbSAWahECmRjIUwWFYo8Hbh2EqybICrqyFA3dQY7LMoVMO+brurnQmEnDQrsx7Yub1AcfG2TXMIWtDQryoWSh27mkMqC6SizL8oVsFl2pF0L7OhiOCMSuyxztnjd4Zi/nahpCAPTuLDjc8LgX6sjplwBf3f9Z3DEp7bIoBeY2+Jx7bOa4BX4H1LBK0CL6shAAAAAAElFTkSuQmCC" style="width: 24px;"/>
+              <img src="data:image/png;base64,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" style="width: 24px;" />
             </a>
             <a id="whatsappShareButton" href="#">
-              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAABWVJREFUaEPtmWWobkUUhp9ri4VdYHcrBtgYmCh2ooIiGIiFYoCBhWBhIKgXFcXu1l+KiVgY2IGo2C22znOZucw37P3tvc/Z57tecP2593x7Yq2Ztd611juTmM5l0nSuP/8bMK1vsMsNrARsC2wOLA4sDMzZkwFfA18A7wCPAI8C/tYobQzYEDgJ2LFxtf4G/A5cC5wBfDps2WEGzAScBZzYn16dV/oR2B+4t25mnQGzAvcDWzVs+T3wd2e1BifMCMw9ZI2/gCOBK6vG1BlwFXBIMeEP4GbgbuAZ4Evgz3Eqn6bPEmNqU2BvYIfgPrluGrF9jI2BLasM2A24vVDsubjwhz0p3LTMBsAtwJLZwG+AFcrgLg2YAXglGLBaNvHJ6Eq/Ne3a8/eFAA9uqWzdc4GT831KA4TJh7IBP0SrP+9ZuXK5uYCDAf+9KQTuu3GAN6G7Jj1/CrGwCPBzWqA04BLgqGz1c4BTJlh5/d+TXivuo5LrxJzgT3cGr9gl00E4f6DOgNeBVbLBawCvTrABBu7jxR5nAqfF33aOwJGGeMhH1xnwCzB7/PgtMH9Y6J8OBniaZuqdgOWBxUISNHZMRi9ERYyxXNYO418sfjs+uNMF8Tch9rvMjR6MKDXlc+5CDhTXk7wBrNpSeYNf9Dq/CLqq6brLCcAT2Uez7oHx79eAjQtdRKB54/fngfWrbmAJ4KNsUYPHMqJJ5gtudyuwZdPA7Lu3qrEiSkqE6wLzBMQT9UrEs0ZaLs5/L/v/wA2IuTnOPw1s1KCULvZUQI4VOyifD70+7HlQCzd9O7qkc98Hlq26ga4GzBwMfAzYrFD+M+CyCMcfA47TwN0jVM5WjD81jDm74QAmxADhVkTI5bpQYhyR43TxfWngDsDATWKZINoZc3XSuwEmHK9ygWzHayrqpyqFnKt75tnealO4HJkBFlxmzCQfhNpl5Yrgq1No9aDwS4CVqOItCLk2NVXS+w2ovEYk0W2uGHKCVZ90pV2zD5YSk0dlgMlIv00iBBuwXUTcF/+TXAQcOyoD7AWS/4vZZu8uGVs9hWgxP4m5ZK9RGWB1armr2OgIjV07s7IG0i33HZUBLwNrZpstE0oBA7mL6PNXZxMuBI4blQE3hHJ3v2yzY4CLu2gP3FcwHWZk80iV9I5Ce8aWL232Scy2UxuNBmPWiz1AKiaFURuVr0ZlwByARZXkVh6E+7SIBeunZ/OCLPbgewwxuvcbcK/DgcuLTWUsZDPqWDUT2G1F8ScImJVVsk4mxACJL5uLrYtdbT6kZeytLTeEWGlJizmTX8q+aVrevIzUADezybAxyeuaLrGsoYe2mNDqBsba0NjJ3diROzVnSBac10J5h+QNTW0/MJ6WUjQxCK3rU+dUp5vss3xr2RsPs0V0MvgVe2u7tylS0iq/AvKiioGYl8ttDsveWC5H6kMWbdHQNso0C7M27vfEuGizVhpjlpdsSLp6APJXlQa8WSCEwfdWl90mYOw2wMPZugNxU97ApZEJTuNtuqXzpqXkjIV6mGskmStvQFZYWj2JDYb8jhTjtJCqxmcgY7chd/Vbqb2u5fJ4DZauMWN7gElkMRJ/VHkD/qiy8pG5eCsWW63ercareax07Q8EgiRmbNtWS5ip0uWBQ9bOV5K7IpT19biRlPHBUEbugMBQWCyWGVsWxBgdkDoD5DgtBbaoOU2hUWwWdvsQlReyheEq8eAOq/rwX3/k85YlvqQhK2OwzTPrdsHy03NCtY8jb1hDZY07KXbpl1ppY0CavEnMgLqVzz4LVvjpWG3TFXVJE6l0pQ8YvlU0ShcDqhZLlHfjRkMG6Ca+B49JxmvAmDbtc9K/R/0zQPliO0wAAAAASUVORK5CYII=" style="width: 24px;"/>
-            </a>
-            <a id="whatsappShareButton" href="#">
-              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAArJJREFUaEPtmEuoT1EUxn+XiGJAZkoeAwPPARETZSJSEpEiIo8bmSilpGRggIEBirzr1sWMDDzzSB4DhYkBd2TmMfGM2Cv71G63z7nn7HU65/+vvaZ777O+bz2+vdfpocutp8vxkwi0ncGUgZQBZQRSCSkDqD7eRAbGAqs8pO+A22r00Mg9MB145YF9AcztZgLfgXHANy2JJkoolAHBvRk4280EPgAzgE8aEm1mQHA/BpYDn2NJtE1AcA8Ae002rgF/qhLpBAIZZimlZ8AR4E5ZIp1EIMO8AziVCJSNQM6+EcAPuxaSUbmFnwK9wBjvG41nYLh9KqwAZhttnwD0AZsKCPQDa0y9jwLW2lt5JjDNKNJu4FzZAGp7YBlwwoJ2fZ4vSaAsztx9GgL7gEM576mOJ7AdOFkQvo4mMAl4A4zMIfDbXEj7gcMleqCVEjoNbPE8/zWNeMM04RXguve+CalQ1sSNExDF+WjVI3P+C1hpCYQAzQJeegutEZgDPPfAHAX2FIRyIfDIW78EbFCHP2Ii2xjQ6MXA3QIwS4Cb3vpxq/dqDlVlVGpfesC1BcCTAiSrASkZ1w4CB9ToIzKwCLjnOd4aIOVuEUUSwK5JJi+0QWA08MUAGuI4F0mVAV3mXN9Eal8Dk72FKaYH5M+E2qqWkDiUhpTGdE2kU6IqCpWZgL8Y+KUi5SZlV4vFEFhvgfkAZCy8DLy1b6N1prTGB1AuDTR1NJkYAkPtLDsvwmtt8pn5jiEgZyfaUgpFOI/XfTMySvRDvRIRi/9HYgnIWWnEq3YGGAzAGdMfu5whZ7D9pdc1BMTJMGAbsNMMMVM9r19Ns98CjgEPSyOquFFLwHUnUjnfvpPeAw+AnxXxVN5eJ4HKzus4kAjUEUXNN1IGNNGr42zKQB1R1HwjZUATvTrO/gPiq3Ex7UjftwAAAABJRU5ErkJggg==" style="width: 24px;"/>
+              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAArJJREFUaEPtmEuoT1EUxn+XiGJAZkoeAwPPARETZSJSEpEiIo8bmSilpGRggIEBirzr1sWMDDzzSB4DhYkBd2TmMfGM2Cv71G63z7nn7HU65/+vvaZ777O+bz2+vdfpocutp8vxkwi0ncGUgZQBZQRSCSkDqD7eRAbGAqs8pO+A22r00Mg9MB145YF9AcztZgLfgXHANy2JJkoolAHBvRk4280EPgAzgE8aEm1mQHA/BpYDn2NJtE1AcA8Ae002rgF/qhLpBAIZZimlZ8AR4E5ZIp1EIMO8AziVCJSNQM6+EcAPuxaSUbmFnwK9wBjvG41nYLh9KqwAZhttnwD0AZsKCPQDa0y9jwLW2lt5JjDNKNJu4FzZAGp7YBlwwoJ2fZ4vSaAsztx9GgL7gEM576mOJ7AdOFkQvo4mMAl4A4zMIfDbXEj7gcMleqCVEjoNbPE8/zWNeMM04RXguve+CalQ1sSNExDF+WjVI3P+C1hpCYQAzQJeegutEZgDPPfAHAX2FIRyIfDIW78EbFCHP2Ii2xjQ6MXA3QIwS4Cb3vpxq/dqDlVlVGpfesC1BcCTAiSrASkZ1w4CB9ToIzKwCLjnOd4aIOVuEUUSwK5JJi+0QWA08MUAGuI4F0mVAV3mXN9Eal8Dk72FKaYH5M+E2qqWkDiUhpTGdE2kU6IqCpWZgL8Y+KUi5SZlV4vFEFhvgfkAZCy8DLy1b6N1prTGB1AuDTR1NJkYAkPtLDsvwmtt8pn5jiEgZyfaUgpFOI/XfTMySvRDvRIRi/9HYgnIWWnEq3YGGAzAGdMfu5whZ7D9pdc1BMTJMGAbsNMMMVM9r19Ns98CjgEPSyOquFFLwHUnUjnfvpPeAw+AnxXxVN5eJ4HKzus4kAjUEUXNN1IGNNGr42zKQB1R1HwjZUATvTrO/gPiq3Ex7UjftwAAAABJRU5ErkJggg==" style="width: 24px;" />
             </a>
             <a id="downloadButton" href="#"><i data-feather="download"></i></a>
           </div>
@@ -207,7 +215,7 @@
 
   <div class="wizard-footer">
     <a href="profile.html" type="button"><i data-feather="user"></i></a>
-    <a href="gallery.html"  class="active" type="button"><i data-feather="image"></i></a>
+    <a href="gallery.html" class="active" type="button"><i data-feather="image"></i></a>
     <a href="explore.html" type="button"><i data-feather="search"></i></a>
     <a href="search.html" type="button"><i data-feather="camera"></i></a>
     <a href="settings.html" type="button"><i data-feather="settings"></i></a>
@@ -239,6 +247,7 @@
           // Crea un nuevo div para cada imagen
           var div = document.createElement("div");
           div.classList.add("image-wrapper");
+          div.style.animation = 'fadeIn 2s forwards';
           div.style.backgroundImage = `url('${url}')`;
           div.style.backgroundSize = "cover";
           div.style.backgroundPosition = "center";
@@ -280,10 +289,6 @@
         })
         .catch(e => console.error('Error downloading image:', e));
     }
-
-
-
-
   </script>
 
   <!-- Feather Icons -->
