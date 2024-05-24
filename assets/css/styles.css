@@ -134,6 +134,15 @@ body {
         align-items: center;
         display: flex;
     }
+    #imageModal img{
+        max-width: calc(100vh / 2);
+        margin: 0 auto;
+        display: block;
+    }
+    .modal-actions{
+        max-width: calc(100vh / 2);
+        margin: 1rem auto;
+    }
 }
 
 /* iPad en orientación horizontal (landscape) */
