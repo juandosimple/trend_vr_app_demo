@@ -53,8 +53,25 @@
 }
 
 .product-gallery img {
-    max-height: 500px;
+    max-height: 400px;
     margin-right: 0.5rem
+}
+  /* iPad en orientación vertical (portrait) */
+  @media only screen and (min-width: 768px) {
+    .product-gallery, .product-content, .breadcrumb  {
+        max-width: 1024px;
+        margin: 0 auto;
+    }
+    .breadcrumb  {
+        margin-bottom: 1rem;
+    }
+    #navbarNavAltMarkup{
+        flex-grow: 0!important;
+    }
+    .nav-link{
+        max-width: 1024px;
+        margin: 0 auto 10px auto;
+    }
 }
 
 .product-content {

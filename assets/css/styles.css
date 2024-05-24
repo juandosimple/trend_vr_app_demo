@@ -111,3 +111,37 @@ body {
       transform: scale(.85);
     }
   }
+
+
+
+  /* iPad en orientación vertical (portrait) */
+@media only screen and (min-width: 768px) {
+    .image-wrapper{
+        width: 12.6%;
+        padding-top: 12.6%;
+    }
+    .wizard-container__content#select-type li {
+        width: 15%;
+    }
+    #select-type li span{
+        font-size: .9rem;
+        margin-top: 5px;
+    }
+
+    .wizard-container__content ul li{
+        width: 150px;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+    }
+}
+
+/* iPad en orientación horizontal (landscape) */
+@media only screen and (min-width: 1024px) {
+    /* Tus estilos aquí */
+}
+
+/* Dispositivos más grandes que el iPad */
+@media only screen and (min-width: 1280px) {
+    /* Tus estilos aquí */
+}
