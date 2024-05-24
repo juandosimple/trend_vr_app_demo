@@ -143,6 +143,9 @@ body {
         max-width: calc(100vh / 2);
         margin: 1rem auto;
     }
+    .change-image{
+        width: calc(100vh / 4)!important;
+    }
 }
 
 /* iPad en orientación horizontal (landscape) */

@@ -119,3 +119,42 @@ body {
 #background-profile{
     animation: rotateScale 10s infinite;
 }
+
+#guidelinesModal .modal-content .modalclose{
+    width: 24px;
+    height: 24px;
+    background: transparent;
+    border: 0;
+    color:#fff;
+    margin: 0 0 0 auto
+}
+
+#guidelinesModal .modal-body{
+    padding-bottom: 2rem;
+}
+
+#guidelinesModal img{
+    max-height: 50vh;
+    width: auto !important;
+    display: block;
+    margin: 0 auto;
+    border-radius: 10px;
+}
+
+#guidelinesModal .carousel-indicators{
+    bottom: -46px;
+
+}
+#guidelinesModal .carousel-indicators [data-bs-target]{
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+}
+#guidelinesModal .carousel-caption{
+    /*background: #25252587;*/
+    border-radius: 10px;
+    position: relative;
+    left: auto;
+    right: auto;
+    bottom: auto;
+}
