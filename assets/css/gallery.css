@@ -125,3 +125,17 @@
     font-weight: bold;
     border-radius: 50%;
 }
+
+#imageModal img {
+    border-radius: 10px;
+}
+
+#imageModal .modal-content{
+    background-color: #000000c9;
+}
+
+#imageModal .modal-header button{
+    background: #000;
+    border: 0;
+    margin: 0 0 0 auto;
+}
