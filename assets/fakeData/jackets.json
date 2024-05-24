@@ -3,9 +3,9 @@
     {
       "id": "12345",
       "type": "upperbody",
-      "url": "https://www.prettylittlething.com/pistachio-linen-look-oversized-drapey-button-detail-blazer.html",
-      "name": "Pistachio Linen Look Oversized Drapey Button Detail Blaze",
-      "description": "Hit refresh on your wardrobe with this next-level blazer doll. Featuring a pistachio linen look blazer with an oversized drapey design and a button detail, we are obsessed. For a look that is sure to have you noticed pair with sandals and chic accessories..",
+      "url": "https://www.prettylittlething.com/black-basic-faux-leather-biker-jacket.html",
+      "name": "Black Basic Faux Leather Biker Jacket",
+      "description": "This faux leather jacket is an essential and the perfect finishing touch to any outfit. Featuring a black PU material with zip detailing and a biker style fit, team this with casual bottoms and chunky boots to complete the look.",
       "colors": [
         {
           "name": "Red",
@@ -23,8 +23,8 @@
       "sizes": ["S", "M", "L", "XL"],
       "pricing": {
         "currency": "USD",
-        "regular_price": 25.00,
-        "sale_price": 20.00
+        "regular_price": 27.00,
+        "sale_price": 37.00
       },
       "details": {
         "material": [
@@ -59,9 +59,9 @@
     {
       "id": "12346",
       "type": "upperbody",
-      "url": "https://www.prettylittlething.com/stone-oversized-trench-coat.html",
-      "name": "Stone Oversized Trench Coat",
-      "description": "Switch up your off-duty look with this unreal oversized trench coat doll. Made using a stone hue material with a button down front, an oversized fit and tie waist detailing, we are obsessed. Perfect for dressing up or down, this beige trench coat is sure to help you earn some serious style points this season doll. Style this women's trench coat with comfy leggings, a cropped tee and chunky boots for a fierce off-duty 'fit.",
+      "url": "https://www.prettylittlething.com/beige-boucle-contrast-binding-cropped-blazer.html",
+      "name": "Beige Boucle Contrast Binding Cropped Blazer",
+      "description": "Get ready to have all eyes on you with this beige boucle contrast binding cropped blazer. Brought to you in a beige boucle material with a contrast binding design, what’s not to love? Its cropped length is sure to earn you all the likes. Finish off the look by pairing this with the matching shorts. It’s a yes from us.",
       "colors": [
         {
           "name": "Light Blue",
@@ -79,8 +79,8 @@
       "sizes": ["30", "32", "34", "36", "38"],
       "pricing": {
         "currency": "USD",
-        "regular_price": 50.00,
-        "sale_price": 45.00
+        "regular_price": 35.00,
+        "sale_price": 38.00
       },
       "details": {
         "material": [
