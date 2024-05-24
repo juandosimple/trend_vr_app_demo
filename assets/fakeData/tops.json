@@ -1,0 +1,187 @@
+{
+  "products": [
+    {
+      "id": "12345",
+      "type": "upperbody",
+      "url": "https://www.prettylittlething.com/prettylittlething-black-embroidered-oversized-hoodie.html",
+      "name": "Black Embroidered Oversized Hoodie",
+      "description": "Your new season wardrobe wouldn't be complete without this black prettylittlething emboridered oversized hoodie, it is the perfect versatile piece to style seamlessly with your existing wardrobe pieces. With a black material, a contrasting 'PrettyLittleThing' print and a relaxed fit, this hoody is sure to be your new go to. Team it with the matching bottoms, chunky trainers and your fave accessories to elevate the look further.",
+      "colors": [
+        {
+          "name": "Red",
+          "hex": "#FF0000"
+        },
+        {
+          "name": "Blue",
+          "hex": "#0000FF"
+        },
+        {
+          "name": "Green",
+          "hex": "#00FF00"
+        }
+      ],
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "regular_price": 25.00,
+        "sale_price": 20.00
+      },
+      "details": {
+        "material": [
+          "100% Organic Cotton",
+          "Breathable Fabric"
+        ],
+        "care_instructions": [
+          "Machine wash cold",
+          "Do not bleach",
+          "Tumble dry low"
+        ]
+      },
+      "gallery": [
+        {
+          "url": "https://firebasestorage.googleapis.com/v0/b/trend-vr-demo.appspot.com/o/clothes%2Ftops%2Fhoodie%2Fhoodie-1.jpg?alt=media&token=2e169aaf-a7e2-4e2b-b516-624105ac7022",
+          "alt": "Front view of the t-shirt"
+        },
+        {
+          "url": "https://firebasestorage.googleapis.com/v0/b/trend-vr-demo.appspot.com/o/clothes%2Ftops%2Fhoodie%2Fhoodie-2.jpg?alt=media&token=d6b158c8-628a-449b-b064-bed0774bcff8",
+          "alt": "Back view of the t-shirt"
+        },
+        {
+          "url": "https://firebasestorage.googleapis.com/v0/b/trend-vr-demo.appspot.com/o/clothes%2Ftops%2Fhoodie%2Fhoodie-3.jpg?alt=media&token=0fca8d89-795a-44e9-8af5-c18e7ec8c4a9",
+          "alt": "Close-up of the fabric"
+        },
+        {
+          "url": "https://firebasestorage.googleapis.com/v0/b/trend-vr-demo.appspot.com/o/clothes%2Ftops%2Fhoodie%2Fhoodie-AI.jpg?alt=media&token=6d3ea929-16a6-4f3a-aebd-c9b5edcfd9c8",
+          "alt": "Close-up of the fabric"
+        }
+      ]
+    },
+    {
+      "id": "12346",
+      "type": "upperbody",
+      "url": "https://www.prettylittlething.com/black-bow-detail-hook-eye-long-sleeve-top.html",
+      "name": "Black Bow Detail Hook & Eye Long Sleeve Top",
+      "description": "Keep it chic in this black bow detail hook and eye long sleeve top. Brought to you in a black hue material with a hook and eye design, long sleeves and bow detailing for that extra touch of glam, how can you resist? Pair this black top with a mini skirt and slip on shoes for a look that is sure to earn you some serious style points.",
+      "colors": [
+        {
+          "name": "Light Blue",
+          "hex": "#ADD8E6"
+        },
+        {
+          "name": "Dark Blue",
+          "hex": "#00008B"
+        },
+        {
+          "name": "Black",
+          "hex": "#000000"
+        }
+      ],
+      "sizes": [
+        "30",
+        "32",
+        "34",
+        "36",
+        "38"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "regular_price": 50.00,
+        "sale_price": 45.00
+      },
+      "details": {
+        "material": [
+          "100% Cotton",
+          "Durable Denim"
+        ],
+        "care_instructions": [
+          "Machine wash warm",
+          "Do not bleach",
+          "Tumble dry medium"
+        ]
+      },
+      "gallery": [
+        {
+          "url": "https://firebasestorage.googleapis.com/v0/b/trend-vr-demo.appspot.com/o/clothes%2Ftops%2Fblacktop%2Fblacktop-1.jpg?alt=media&token=f82a1975-4b49-4225-9c77-421ede70236a",
+          "alt": "Front view of the jeans"
+        },
+        {
+          "url": "https://firebasestorage.googleapis.com/v0/b/trend-vr-demo.appspot.com/o/clothes%2Ftops%2Fblacktop%2Fblacktop-2.jpg?alt=media&token=f8812ca0-e865-40d0-911f-5f613af44131",
+          "alt": "Back view of the jeans"
+        },
+        {
+          "url": "https://firebasestorage.googleapis.com/v0/b/trend-vr-demo.appspot.com/o/clothes%2Ftops%2Fblacktop%2Fblacktop-3.jpg?alt=media&token=065b7ab9-4567-4f4f-a6ea-0d61ab436acb",
+          "alt": "Close-up of the fabric"
+        },
+        {
+          "url": "https://firebasestorage.googleapis.com/v0/b/trend-vr-demo.appspot.com/o/clothes%2Ftops%2Fblacktop%2Fblacktop-AI.jpg?alt=media&token=b70ccfe5-a788-4a3d-a5bf-a82573895d51",
+          "alt": "Close-up of the fabric"
+        }
+      ]
+    },
+    {
+      "id": "12347",
+      "type": "upperbody",
+      "url": "https://www.prettylittlething.com/dark-blue-premium-linen-look-halter-crop-top.html",
+      "name": "White Cotton Ruched Bow Shirt",
+      "description": "An elegant evening dress perfect for special occasions.",
+      "colors": [
+        {
+          "name": "Black",
+          "hex": "#000000"
+        },
+        {
+          "name": "Red",
+          "hex": "#FF0000"
+        },
+        {
+          "name": "White",
+          "hex": "#FFFFFF"
+        }
+      ],
+      "sizes": [
+        "S",
+        "M",
+        "L"
+      ],
+      "pricing": {
+        "currency": "USD",
+        "regular_price": 80.00,
+        "sale_price": 70.00
+      },
+      "details": {
+        "material": [
+          "100% Silk",
+          "Soft and Smooth"
+        ],
+        "care_instructions": [
+          "Dry clean only",
+          "Do not bleach",
+          "Iron on low heat"
+        ]
+      },
+      "gallery": [
+        {
+          "url": "https://firebasestorage.googleapis.com/v0/b/trend-vr-demo.appspot.com/o/clothes%2Ftops%2Fbluetop%2Fbluetop-1.jpg?alt=media&token=e3a6e695-55a4-4a7d-8445-051a34ded7cd",
+          "alt": "Front view of the dress"
+        },
+        {
+          "url": "https://firebasestorage.googleapis.com/v0/b/trend-vr-demo.appspot.com/o/clothes%2Ftops%2Fbluetop%2Fbluetop-2.jpg?alt=media&token=6c7bcf5d-171d-4203-b5ce-715dde7fefc2",
+          "alt": "Back view of the dress"
+        },
+        {
+          "url": "https://firebasestorage.googleapis.com/v0/b/trend-vr-demo.appspot.com/o/clothes%2Ftops%2Fbluetop%2Fbluetop-3.jpg?alt=media&token=9db5b522-f562-4d9c-bef1-4263776a3bdd",
+          "alt": "Close-up of the fabric"
+        },
+        {
+          "url": "https://firebasestorage.googleapis.com/v0/b/trend-vr-demo.appspot.com/o/clothes%2Ftops%2Fbluetop%2Fbluetop-AI.jpg?alt=media&token=57e747e0-17c2-4cdc-a634-ee087dbc4247",
+          "alt": "Close-up of the fabric"
+        }
+      ]
+    }
+  ]
+}

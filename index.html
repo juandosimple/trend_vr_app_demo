@@ -11,20 +11,61 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400..800&display=swap" rel="stylesheet">
+  <link rel="apple-touch-icon" sizes="57x57" href="./assets/images/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="./assets/images/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="./assets/images/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="./assets/images/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="./assets/images/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="./assets/images/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="./assets/images/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="./assets/images/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="./assets/images/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="./assets/images/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="./assets/images/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./assets/images/favicon-16x16.png">
+  <link rel="manifest" href="./assets/images/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="./assets/images/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+  <script>
+    // Función para solicitar pantalla completa
+function goFullscreen() {
+    let elem = document.documentElement; // Puedes cambiar esto a un elemento específico si lo deseas
+    if (elem.requestFullscreen) {
+        elem.requestFullscreen();
+    } else if (elem.mozRequestFullScreen) { // Firefox
+        elem.mozRequestFullScreen();
+    } else if (elem.webkitRequestFullscreen) { // Chrome, Safari y Opera
+        elem.webkitRequestFullscreen();
+    } else if (elem.msRequestFullscreen) { // IE/Edge
+        elem.msRequestFullscreen();
+    }
+}
+
+// Añadir un evento para activar la pantalla completa cuando el usuario interactúe
+document.addEventListener('click', function() {
+    goFullscreen();
+}, { once: true });
+
+  </script>
 </head>
 
 <body>
-
-  <div class="container">
+  <div style="width: 100%;min-height: 100vh;position: absolute;left: 0;overflow: hidden;top: 0;z-index: 0;display: flex;justify-content: center;align-items: center;background: black;">
+  <video autoplay muted loop id="backgroundVideo" style="height: 100vh;filter: blur(10px) grayscale(1);">
+  </div>
+  <div class="container" style=" position: relative; ">
     <div class="row justify-content-center login-container">
-      <div class="col-5 login-container__content">
+      <div class="col-lg-5 col-md-5 col-11 login-container__content">
         <div class="header">
-          <img src="./assets/images/logo.png" class="logo">
+            <!-- El src se establecerá dinámicamente con JavaScript -->
+          </video>
+          <img src="./assets/images/logo-white.png" class="logo">
           <h1 class="title">Snap your style</h1>
-          <h1 class="subtitle">Join our community today!</h1>
         </div>
         <!-- Button para redirigir a dashboard.html -->
-        <a href="dashboard.html" class="btn gsi-material-button">
+        <a href="./profile.html" class="btn gsi-material-button">
           <div class="gsi-material-button-state"></div>
           <div class="gsi-material-button-content-wrapper">
             <div class="gsi-material-button-icon">
@@ -45,8 +86,8 @@
                 <path fill="none" d="M0 0h48v48H0z"></path>
               </svg>
             </div>
-            <span class="gsi-material-button-contents">Sign up with Google</span>
-            <span style="display: none;">Sign up with Google</span>
+            <span class="gsi-material-button-contents">Sign in with Google</span>
+            <span style="display: none;">Sign in with Google</span>
           </div>
         </a>
       </div>
@@ -57,6 +98,46 @@
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>
 
+
+  <script>
+    // Función para generar un ID único
+    function generateID() {
+      return 'id_' + Math.random().toString(36).substr(2, 9);
+    }
+
+    // Función que se ejecuta cuando la página se ha cargado completamente
+    window.onload = function () {
+      // Intentar obtener el userID desde localStorage
+      let userID = localStorage.getItem('userID');
+      
+      // Si no hay un userID en localStorage, generarlo y guardarlo
+      if (!userID) {
+        userID = generateID();
+        localStorage.setItem('userID', userID);
+      }
+      
+      // Mostrar el userID en la consola para propósitos de depuración
+      console.log('Current User ID:', userID);
+
+      // Lista de nombres de videos
+      const videos = [
+        "video_background_1.webm",
+       "video_background_2.webm", 
+       "video_background_3.webm",
+       "video_background_4.webm",
+       "video_background_5.webm",
+       "video_background_6.webm",
+       "video_background_7.webm",
+       "video_background_8.webm",
+       "video_background_9.webm",
+      ];
+      // Seleccionar un video aleatorio
+      const randomVideo = videos[Math.floor(Math.random() * videos.length)];
+      // Establecer el src del video
+      document.getElementById('backgroundVideo').src = "./assets/videos/" + randomVideo;
+    };
+  </script>   
+    
 </body>
 
 </html>

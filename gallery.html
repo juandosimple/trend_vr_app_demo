@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TrendVr - Gallery</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400..800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./assets/css/gallery.css" />
+  <link rel="stylesheet" href="./assets/css/styles.css" />
+  <link rel="apple-touch-icon" sizes="57x57" href="./assets/images/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="./assets/images/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="./assets/images/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="./assets/images/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="./assets/images/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="./assets/images/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="./assets/images/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="./assets/images/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="./assets/images/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="./assets/images/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="./assets/images/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./assets/images/favicon-16x16.png">
+  <link rel="manifest" href="./assets/images/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="./assets/images/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+  <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
+
+  <style>
+    #preloader {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #imageContainer {
+      width: 100%;
+      min-height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+    }
+
+    #imageContainer img {
+      max-width: 50%;
+      width: 250px;
+      margin: 0;
+      border-radius: 0;
+      padding: 2px;
+      overflow: hidden;
+      opacity: 0;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+
+    .title {
+      text-align: center;
+      width: 100%;
+      color: #fff;
+    }
+
+    .change-image {
+      width: 60%;
+      background: #252525;
+      padding: 1rem;
+      border-radius: 5px;
+      color: #fff;
+      text-decoration: none;
+      text-align: center;
+      margin: 1rem auto;
+    }
+
+    .empty-images {
+      flex-direction: column;
+      width: 100%;
+      justify-content: center;
+      display: flex;
+      align-items: center;
+    }
+
+    .empty-images p {
+      font-weight: 400;
+      color: #ccc;
+      font-size: 1.2rem;
+      text-align: center;
+      padding: 0 1rem;
+      margin: 0;
+    }
+
+    .empty-images span {
+      color: #9d9d9d;
+      margin-top: 1rem;
+      text-align: center;
+    }
+
+    #uploadPreloader {
+      display: none;
+      justify-content: center;
+      align-items: center;
+      margin-top: 1rem;
+    }
+
+    #successMessage {
+      display: none;
+      text-align: center;
+      color: white;
+      margin-top: 1rem;
+      background: #509b50;
+      border-radius: 5px;
+      padding: 1rem;
+      font-weight: bold;
+    }
+.image-wrapper{
+  opacity: 0;
+}
+
+  </style>
+  <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-storage.js"></script>
+  <script>
+    var firebaseConfig = {
+      apiKey: "AIzaSyCtZxlonTfLpU_5-HMuf6RdDmbJy3iMdPU",
+      authDomain: "trend-vr-demo.firebaseapp.com",
+      projectId: "trend-vr-demo",
+      storageBucket: "trend-vr-demo.appspot.com",
+      messagingSenderId: "383550694303",
+      appId: "1:383550694303:web:362cf770089f4008e4d3aa",
+    };
+    firebase.initializeApp(firebaseConfig);
+    var storage = firebase.storage();
+
+    function displayImages() {
+      const userId = localStorage.getItem("userID");
+      const listRef = storage.ref(`users/${userId}/generated-images`);
+      listRef
+        .listAll()
+        .then(function (res) {
+          if (res.items.length === 0) {
+            document.getElementById("preloader").style.display = "none";
+            document.getElementById("imageContainer").style.display = "none";
+            document.querySelector(".empty-images").style.display = "flex";
+          } else {
+            document.querySelector(".empty-images").style.display = "none";
+            res.items.forEach(function (imageRef) {
+              displayImage(imageRef);
+            });
+          }
+        })
+        .catch(function (error) {
+          console.log("Error fetching images:", error);
+        });
+    }
+
+    function displayImage(imageRef) {
+      imageRef
+        .getDownloadURL()
+        .then(function (url) {
+          var img = document.createElement("img");
+          img.src = url;
+          document.getElementById("imageContainer").appendChild(img);
+        })
+        .catch(function (error) {
+          console.log("Error displaying image:", error);
+        })
+        .finally(function () {
+          document.getElementById("preloader").style.display = "none";
+        });
+    }
+  </script>
+</head>
+
+<body>
+  <div class="logo-header">
+    <img src="./assets/images/logo-white.png" class="logo" />
+  </div>
+  <div class="container" style="padding-top: 50px;">
+    <div class="row justify-content-center" id="container2">
+      <div class="col-12 wizard-container__content">
+        <h2 class="title">Your TrendVR Gallery</h2>
+
+        <div class="empty-images" style="display: none">
+          <dotlottie-player src="./assets/images/empty.lottie" background="transparent" speed="1"
+            style="width: 300px; height: 300px" direction="1" playmode="normal" loop="" autoplay=""></dotlottie-player>
+          <p>You don't have any images yet.</p>
+          <span>Explore any store and choose some clothing. We'll create a
+            personalized image with your selection!</span>
+        </div>
+
+        <div id="imageContainer">
+          <div id="preloader">
+            <dotlottie-player src="./assets/images/1715774396840.lottie" background="transparent" speed="1"
+              style="width: 300px; height: 300px" direction="1" playMode="normal" loop autoplay></dotlottie-player>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal for Image View -->
+  <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i data-feather="x"></i></button>
+        </div>
+        <div class="modal-body">
+          <img id="modalImage" class="img-fluid" src="" alt="Expanded View" />
+          <div class="modal-actions">
+            <a id="whatsappShareButton" href="#">
+              <img src="data:image/png;base64,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" style="width: 24px;" />
+            </a>
+            <a id="downloadButton" href="#"><i data-feather="download"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wizard-footer">
+    <a href="profile.html" type="button"><i data-feather="user"></i></a>
+    <a href="gallery.html" class="active" type="button"><i data-feather="image"></i></a>
+    <a href="explore.html" type="button"><i data-feather="aperture"></i></a>
+    <a href="search.html" type="button"><i data-feather="search"></i></a>
+    <a href="settings.html" type="button"><i data-feather="settings"></i></a>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+
+  <script>
+    window.onload = function () {
+      let userID = localStorage.getItem("userID");
+      if (!userID) {
+        window.location.href = "index.html";
+      } else {
+        displayImages();
+        console.log("Current User ID:", userID); // Para propósitos de depuración
+      }
+      // Evento de clic para el botón de descarga
+      document.getElementById("downloadButton").addEventListener('click', function (e) {
+        e.preventDefault(); // Prevenir la navegación
+        const imageUrl = document.getElementById("modalImage").src; // Asumiendo que modalImage tiene la URL de la imagen
+        downloadImage(imageUrl);
+      });
+    };
+
+    function displayImage(imageRef) {
+      imageRef.getDownloadURL()
+        .then(function (url) {
+          // Crea un nuevo div para cada imagen
+          var div = document.createElement("div");
+          div.classList.add("image-wrapper");
+          div.style.animation = 'fadeIn 2s forwards';
+          div.style.backgroundImage = `url('${url}')`;
+          div.style.backgroundSize = "cover";
+          div.style.backgroundPosition = "center";
+
+          // Evento de clic para abrir el modal con la imagen completa
+          div.onclick = function () {
+            document.getElementById("modalImage").src = url;
+
+            // Configurar el enlace de WhatsApp
+            document.getElementById("whatsappShareButton").href = `https://api.whatsapp.com/send?text=Check out this image: ${encodeURIComponent(url)}`;
+
+            var myModal = new bootstrap.Modal(document.getElementById('imageModal'), {});
+            myModal.show();
+          };
+
+          // Añade el div al contenedor de imágenes
+          document.getElementById("imageContainer").appendChild(div);
+        })
+        .catch(function (error) {
+          console.log("Error displaying image:", error);
+        })
+        .finally(function () {
+          document.getElementById("preloader").style.display = "none";
+        });
+    }
+
+    function downloadImage(url) {
+      fetch(url)
+        .then(response => response.blob())
+        .then(blob => {
+          const blobUrl = URL.createObjectURL(blob);
+          const link = document.createElement('a');
+          link.href = blobUrl;
+          link.download = "downloadedImage.jpg"; // Puedes definir un nombre de archivo específico aquí
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+          URL.revokeObjectURL(blobUrl); // Limpiar el URL del Blob después de descargar
+        })
+        .catch(e => console.error('Error downloading image:', e));
+    }
+  </script>
+
+  <!-- Feather Icons -->
+  <script src="https://unpkg.com/feather-icons"></script>
+  <script>
+    feather.replace();
+  </script>
+  <!-- Feather Icons -->
+</body>
+
+</html>

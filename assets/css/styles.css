@@ -1,0 +1,159 @@
+/* Header */
+body {
+    background-color: #fff;
+}
+
+.logo-header {
+    position: fixed;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    left: 0;
+    padding: 1rem 0;
+    background-color: #252525;
+    z-index: 999;
+}
+
+.logo-header img {
+    width: 100%;
+    max-width: 200px;
+}
+
+/* Footer */
+.wizard-footer {
+    background-color: #827F76;
+    width: 100%;
+    left: 0;
+    padding: 1rem .5rem;
+    position: fixed;
+    bottom: 0;
+    align-items: center;
+    justify-content: space-evenly;
+    display: flex;
+}
+
+.wizard-footer a {
+    color: #fff;
+    opacity: .3;
+}
+
+.wizard-footer a.active {
+    opacity: 1;
+}
+
+.modal-content{
+    background: #4a4a4a;
+}
+
+.modal-content .modal-header,
+.modal-content .modal-footer{
+    border:0
+}
+
+.modal-content .btn-close{
+    color:#fff;
+}
+
+.modal-content .btn.btn-primary{
+    background: #252525;
+    border-color: #252525;
+}
+
+.modal-content .modal-title{
+    color:#fff;
+}
+
+
+.modal-content .modal-body #uploadForm .btn-primary{
+    margin-top: 1rem;
+    width:100%
+}
+
+.modal-content .modal-body #uploadForm input{
+    color:#fff;
+}
+
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-15px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes subtleRotateScale {
+    0% {
+      transform: rotate(0deg) scale(1);
+    }
+
+    50% {
+      transform: rotate(70deg) scale(2.5);
+    }
+
+    100% {
+      transform: rotate(0deg) scale(1);
+    }
+  }
+
+  @keyframes pulse {
+    0%, 100% {
+      transform: scale(.8);
+    }
+    
+    50% {
+      transform: scale(.85);
+    }
+  }
+
+
+
+  /* iPad en orientación vertical (portrait) */
+@media only screen and (min-width: 768px) {
+    .image-wrapper{
+        width: 12.6%;
+        padding-top: 12.6%;
+    }
+    .wizard-container__content#select-type li {
+        width: 15%;
+    }
+    #select-type li span{
+        font-size: .9rem;
+        margin-top: 5px;
+    }
+
+    .wizard-container__content ul li{
+        width: 150px;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+    }
+    #imageModal img{
+        max-width: calc(100vh / 2);
+        margin: 0 auto;
+        display: block;
+    }
+    .modal-actions{
+        max-width: calc(100vh / 2);
+        margin: 1rem auto;
+    }
+    .change-image{
+        width: calc(100vh / 4)!important;
+    }
+}
+
+/* iPad en orientación horizontal (landscape) */
+@media only screen and (min-width: 1024px) {
+    /* Tus estilos aquí */
+}
+
+/* Dispositivos más grandes que el iPad */
+@media only screen and (min-width: 1280px) {
+    /* Tus estilos aquí */
+}

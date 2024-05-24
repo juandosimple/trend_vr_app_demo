@@ -1,3 +1,24 @@
+body {
+    background-color: #5d5d5d;
+}
+
+.logo-header {
+    position: fixed;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    left: 0;
+    padding: 1rem 0;
+    background-color: #252525;
+}
+
+.logo-header img {
+    width: 100%;
+    max-width: 200px;
+}
+
 .vertical-centering {
     align-items: center;
     min-height: 100vh;
@@ -29,7 +50,7 @@
     width: 100%;
     display: block;
     text-align: center;
-    color: #fff
+    color: #3a3a3a;
 }
 
 .wizard-container__content .subtitle {
@@ -92,4 +113,48 @@
     -ms-transform: scale(1.1);
     transform: scale(1.1);
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+
+#background-profile{
+    animation: rotateScale 10s infinite;
+}
+
+#guidelinesModal .modal-content .modalclose{
+    width: 24px;
+    height: 24px;
+    background: transparent;
+    border: 0;
+    color:#fff;
+    margin: 0 0 0 auto
+}
+
+#guidelinesModal .modal-body{
+    padding-bottom: 2rem;
+}
+
+#guidelinesModal img{
+    max-height: 50vh;
+    width: auto !important;
+    display: block;
+    margin: 0 auto;
+    border-radius: 10px;
+}
+
+#guidelinesModal .carousel-indicators{
+    bottom: -46px;
+
+}
+#guidelinesModal .carousel-indicators [data-bs-target]{
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+}
+#guidelinesModal .carousel-caption{
+    /*background: #25252587;*/
+    border-radius: 10px;
+    position: relative;
+    left: auto;
+    right: auto;
+    bottom: auto;
 }

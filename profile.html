@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TrendVr - Model Image</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@400..800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./assets/css/profile.css" />
+    <link rel="stylesheet" href="./assets/css/styles.css" />
+    <link rel="apple-touch-icon" sizes="57x57" href="./assets/images/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="./assets/images/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="./assets/images/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="./assets/images/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="./assets/images/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="./assets/images/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="./assets/images/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="./assets/images/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/images/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="./assets/images/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="./assets/images/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/images/favicon-16x16.png">
+    <link rel="manifest" href="./assets/images/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="./assets/images/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <script
+      src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs"
+      type="module"
+    ></script>
+
+    <style>
+      #preloader {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      #imageContainer {
+        width: 100%;
+        min-height: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      #imageContainer img {
+        max-width: 100%;
+        width: 330px;
+        margin: 1rem 0;
+        background: #fff;
+        border-radius: 5px;
+        padding: 1rem;
+        animation: float 5s ease-in-out infinite;
+      }
+
+      .title {
+        text-align: center;
+        width: 100%;
+        color: #fff;
+      }
+
+      .change-image {
+        width: 40%;
+        background: #252525;
+        padding: .5rem 1rem;
+        border-radius: 5rem;
+        color: #fff;
+        text-decoration: none;
+        text-align: center;
+        margin: 1rem auto;
+        animation: pulse 4s infinite;
+        animation-delay: 5s;
+        transform: scale(.8);
+      }
+
+      .empty-images {
+        flex-direction: column;
+        width: 100%;
+        justify-content: center;
+        display: flex;
+        align-items: center;
+      }
+
+      .empty-images p {
+        font-weight: 400;
+        color: #ccc;
+        font-size: 1.2rem;
+        text-align: center;
+        padding: 0 1rem;
+        margin: 0;
+      }
+
+      .empty-images span {
+        color: #9d9d9d;
+        margin-top: 1rem;
+      }
+
+      #uploadPreloader {
+        display: none;
+        justify-content: center;
+        align-items: center;
+        margin-top: 1rem;
+      }
+
+      #successMessage {
+        display: none;
+        text-align: center;
+        color: white;
+        margin-top: 1rem;
+        background: #509b50;
+        border-radius: 5px;
+        padding: 1rem;
+        font-weight: bold;
+      }
+    </style>
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-storage.js"></script>
+    <script>
+      var firebaseConfig = {
+        apiKey: "AIzaSyCtZxlonTfLpU_5-HMuf6RdDmbJy3iMdPU",
+        authDomain: "trend-vr-demo.firebaseapp.com",
+        projectId: "trend-vr-demo",
+        storageBucket: "trend-vr-demo.appspot.com",
+        messagingSenderId: "383550694303",
+        appId: "1:383550694303:web:362cf770089f4008e4d3aa",
+      };
+      firebase.initializeApp(firebaseConfig);
+      var storage = firebase.storage();
+
+      function displayImages() {
+        const userId = localStorage.getItem("userID");
+        const listRef = storage.ref(`users/${userId}/profile`);
+        listRef
+          .listAll()
+          .then(function (res) {
+            if (res.items.length === 0) {
+              document.getElementById("preloader").style.display = "none";
+              document.getElementById("imageContainer").style.display = "none";
+              document.querySelector(".empty-images").style.display = "flex";
+            } else {
+              document.querySelector(".empty-images").style.display = "none";
+              res.items.forEach(function (imageRef) {
+                displayImage(imageRef);
+              });
+            }
+          })
+          .catch(function (error) {
+            console.log("Error fetching images:", error);
+          });
+      }
+
+      function displayImage(imageRef) {
+        imageRef
+          .getDownloadURL()
+          .then(function (url) {
+            var img = document.createElement("img");
+            img.src = url;
+            document.getElementById("imageContainer").appendChild(img);
+            document.getElementById("background-profile").style.backgroundImage = `url(${url})`;
+            console.log('ksd')
+          })
+          .catch(function (error) {
+            console.log("Error displaying image:", error);
+          })
+          .finally(function () {
+            document.getElementById("preloader").style.display = "none";
+          });
+      }
+    </script>
+  </head>
+
+  <body>
+    <div id="background-profile" style="background-size: cover;background-position: center;background-repeat: no-repeat;position: absolute;left: 0;top: 0;z-index: 0;width: 100%;height: 100vh;filter: blur(50px);"></div>
+    <div class="logo-header">
+      <img src="./assets/images/logo-white.png" class="logo" />
+    </div>
+    <div class="container" style=" position: relative; ">
+      <div
+        class="row justify-content-center vertical-centering"
+        id="container2"
+      >
+        <div class="col-12 wizard-container__content">
+          <h2 class="title">Set your TrendVR Snap</h2>
+
+          <div class="empty-images" style="display: none">
+            <dotlottie-player
+              src="./assets/images/empty.lottie"
+              background="transparent"
+              speed="1"
+              style="width: 300px; height: 300px"
+              direction="1"
+              playmode="normal"
+              loop=""
+              autoplay=""
+            ></dotlottie-player>
+            <p>You don't have any images yet.</p>
+          </div>
+
+          <div id="imageContainer">
+            <div id="preloader">
+              <dotlottie-player
+                src="./assets/images/1715774396840.lottie"
+                background="transparent"
+                speed="1"
+                style="width: 300px; height: 300px"
+                direction="1"
+                playMode="normal"
+                loop
+                autoplay
+              ></dotlottie-player>
+            </div>
+          </div>
+
+          <a
+            href="#"
+            class="change-image"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+            ><i data-feather="upload"></i> Upload</a
+          >
+          <p style=" text-align: center; width: 100%; ">
+            see <a href="#" style="color:#3a3a3a" data-bs-toggle="modal" data-bs-target="#guidelinesModal">Guidelines</a> for a better result
+          </p>
+        </div>
+      </div>
+    </div>
+    <!-- Upload Modal -->
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">
+              Upload your Catwalk Snap
+            </h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form id="uploadForm" enctype="multipart/form-data">
+              <input type="file" name="file" id="fileUpload" />
+              <button type="submit" class="btn btn-primary">Upload</button>
+            </form>
+            <div id="uploadPreloader">
+              <dotlottie-player
+                src="./assets/images/1715774396840.lottie"
+                background="transparent"
+                speed="1"
+                style="width: 100px; height: 100px"
+                direction="1"
+                playMode="normal"
+                loop
+                autoplay
+              ></dotlottie-player>
+            </div>
+            <div id="successMessage">
+              <i data-feather="check"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Guidelines Modal -->
+    <div
+      class="modal fade"
+      id="guidelinesModal"
+      tabindex="-1"
+      aria-labelledby="guidelinesModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button
+              type="button"
+              class="modalclose"
+              data-bs-dismiss="modal"
+            ><i data-feather="x"></i></button>
+          </div>
+          <div class="modal-body">
+            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+              <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Step 1"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Step 2"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Step 3"></button>
+              </div>
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img src="./assets/images/tutorial-1.jpg" class="d-block w-100" alt="Step 1">
+                  <div class="carousel-caption  d-md-block">
+                    <h5>Take a Full-Body Photo</h5>
+                    <p>Make sure your whole body is in the frame from head to toe.</p>
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <img src="./assets/images/tutorial-2.jpg" class="d-block w-100" alt="Step 2">
+                  <div class="carousel-caption  d-md-block">
+                    <h5>Simple Background</h5>
+                    <p>Choose a clear, uncluttered background to keep the focus on you.</p>
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <img src="./assets/images/tutorial-3.jpg" class="d-block w-100" alt="Step 3">
+                  <div class="carousel-caption  d-md-block">
+                    <h5>Good Lighting</h5>
+                    <p>Avoid selfies and dark environments. Use a tripod or stable surface and ensure good lighting.</p>
+                  </div>
+                </div>
+              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="wizard-footer">
+      <a href="profile.html"  class="active" type="button"><i data-feather="user"></i></a>
+      <a href="gallery.html" type="button"><i data-feather="image"></i></a>
+      <a href="explore.html" type="button"><i data-feather="aperture"></i></a>
+      <a href="search.html" type="button"><i data-feather="search"></i></a>
+      <a href="settings.html" type="button"><i data-feather="settings"></i></a>
+    </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+      window.onload = function () {
+        let userID = localStorage.getItem("userID");
+        if (!userID) {
+          window.location.href = "index.html";
+        } else {
+          displayImages();
+          console.log("Current User ID:", userID); // Para propósitos de depuración
+        }
+      };
+    </script>
+
+    <script>
+      document
+        .getElementById("uploadForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+          var file = document.getElementById("fileUpload").files[0];
+          var userID = localStorage.getItem("userID"); // Recupera el ID del usuario del Local Storage
+
+          // Cambia 'file.name' a 'profile-image.jpg'
+          var storageRef = firebase
+            .storage()
+            .ref("users/" + userID + "/profile/profile-image.jpg"); // Fija el nombre del archivo
+
+          var uploadTask = storageRef.put(file);
+
+          document.getElementById("uploadForm").style.display = "none";
+          document.getElementById("uploadPreloader").style.display = "flex";
+
+          uploadTask.on(
+            "state_changed",
+            function (snapshot) {
+              // Aquí puedes agregar un indicador de progreso basado en snapshot
+            },
+            function (error) {
+              console.error("Upload failed:", error);
+              alert("Error during file upload: " + error.message);
+            },
+            function () {
+              uploadTask.snapshot.ref
+                .getDownloadURL()
+                .then(function (downloadURL) {
+                  console.log("File available at", downloadURL);
+                  // Guarda la URL en el LocalStorage
+                  localStorage.setItem("userImageProfile", downloadURL);
+
+                  document.getElementById("uploadPreloader").style.display =
+                    "none";
+                  document.getElementById("successMessage").style.display =
+                    "block";
+                  setTimeout(function () {
+                    window.location.reload(); // Recarga la página para mostrar la nueva imagen
+                  }, 2000);
+                });
+            }
+          );
+        });
+    </script>
+
+    <!-- Feather Icons -->
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script>
+      feather.replace();
+    </script>
+    <!-- Feather Icons -->
+  </body>
+</html>

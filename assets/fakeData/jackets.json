@@ -1,0 +1,172 @@
+{
+  "products": [
+    {
+      "id": "12345",
+      "type": "upperbody",
+      "url": "https://www.prettylittlething.com/pistachio-linen-look-oversized-drapey-button-detail-blazer.html",
+      "name": "Pistachio Linen Look Oversized Drapey Button Detail Blaze",
+      "description": "Hit refresh on your wardrobe with this next-level blazer doll. Featuring a pistachio linen look blazer with an oversized drapey design and a button detail, we are obsessed. For a look that is sure to have you noticed pair with sandals and chic accessories..",
+      "colors": [
+        {
+          "name": "Red",
+          "hex": "#FF0000"
+        },
+        {
+          "name": "Blue",
+          "hex": "#0000FF"
+        },
+        {
+          "name": "Green",
+          "hex": "#00FF00"
+        }
+      ],
+      "sizes": ["S", "M", "L", "XL"],
+      "pricing": {
+        "currency": "USD",
+        "regular_price": 25.00,
+        "sale_price": 20.00
+      },
+      "details": {
+        "material": [
+          "100% Organic Cotton",
+          "Breathable Fabric"
+        ],
+        "care_instructions": [
+          "Machine wash cold",
+          "Do not bleach",
+          "Tumble dry low"
+        ]
+      },
+      "gallery": [
+        {
+          "url": "https://firebasestorage.googleapis.com/v0/b/trend-vr-demo.appspot.com/o/clothes%2Fjackets%2Fgreen%2Fgreen-jacket-1.jpg?alt=media&token=3f697c01-648c-492c-9ab7-96056a328de8",
+          "alt": "Front view of the t-shirt"
+        },
+        {
+          "url": "https://firebasestorage.googleapis.com/v0/b/trend-vr-demo.appspot.com/o/clothes%2Fjackets%2Fgreen%2Fgreen-jacket-2.jpg?alt=media&token=0a8ce267-0e84-4b58-a5f1-174c07c689f0",
+          "alt": "Back view of the t-shirt"
+        },
+        {
+          "url": "https://firebasestorage.googleapis.com/v0/b/trend-vr-demo.appspot.com/o/clothes%2Fjackets%2Fgreen%2Fgreen-jacket-3.jpg?alt=media&token=afcfe0c1-f5c0-4a24-80b8-720bb94eeae2",
+          "alt": "Close-up of the fabric"
+        },
+        {
+          "url": "https://firebasestorage.googleapis.com/v0/b/trend-vr-demo.appspot.com/o/clothes%2Fjackets%2Fgreen%2Fgreen-jacket-AI.jpg?alt=media&token=4625f9db-1dcd-482f-85e5-f0e4a69aaa04",
+          "alt": "Close-up of the fabric"
+        }
+      ]
+    },
+    {
+      "id": "12346",
+      "type": "upperbody",
+      "url": "https://www.prettylittlething.com/stone-oversized-trench-coat.html",
+      "name": "Stone Oversized Trench Coat",
+      "description": "Switch up your off-duty look with this unreal oversized trench coat doll. Made using a stone hue material with a button down front, an oversized fit and tie waist detailing, we are obsessed. Perfect for dressing up or down, this beige trench coat is sure to help you earn some serious style points this season doll. Style this women's trench coat with comfy leggings, a cropped tee and chunky boots for a fierce off-duty 'fit.",
+      "colors": [
+        {
+          "name": "Light Blue",
+          "hex": "#ADD8E6"
+        },
+        {
+          "name": "Dark Blue",
+          "hex": "#00008B"
+        },
+        {
+          "name": "Black",
+          "hex": "#000000"
+        }
+      ],
+      "sizes": ["30", "32", "34", "36", "38"],
+      "pricing": {
+        "currency": "USD",
+        "regular_price": 50.00,
+        "sale_price": 45.00
+      },
+      "details": {
+        "material": [
+          "100% Cotton",
+          "Durable Denim"
+        ],
+        "care_instructions": [
+          "Machine wash warm",
+          "Do not bleach",
+          "Tumble dry medium"
+        ]
+      },
+      "gallery": [
+        {
+          "url": "https://firebasestorage.googleapis.com/v0/b/trend-vr-demo.appspot.com/o/clothes%2Fjackets%2Fbeige%2Fbeige-jacket-1.jpg?alt=media&token=318672d3-a5f9-457c-b95e-504f567007c1",
+          "alt": "Front view of the jeans"
+        },
+        {
+          "url": "https://firebasestorage.googleapis.com/v0/b/trend-vr-demo.appspot.com/o/clothes%2Fjackets%2Fbeige%2Fbeige-jacket-2.jpg?alt=media&token=d3baf41e-327a-47ce-b4ed-21b786977ea9",
+          "alt": "Back view of the jeans"
+        },
+        {
+          "url": "https://firebasestorage.googleapis.com/v0/b/trend-vr-demo.appspot.com/o/clothes%2Fjackets%2Fbeige%2Fbeige-jacket-3.jpg?alt=media&token=f7f19984-15da-4af4-bc11-233ea796c5df",
+          "alt": "Close-up of the fabric"
+        },
+        {
+          "url": "https://firebasestorage.googleapis.com/v0/b/trend-vr-demo.appspot.com/o/clothes%2Fjackets%2Fbeige%2Fbeige-jacket-AI.jpg?alt=media&token=00375a4f-0ea2-4eba-bea5-02553b21da1c",
+          "alt": "Close-up of the fabric"
+        }
+      ]
+    },
+    {
+      "id": "12347",
+      "type": "upperbody",
+      "url": "https://www.prettylittlething.com/cream-faux-leather-racer-graphics-oversized-bomber-jacket.html",
+      "name": "Cream Faux Leather Racer Graphics Oversized Bomber Jacket",
+      "description": "Get race ready this summer with this cream faux leather racer graphics oversized bomber jacket. Brought to you in a cream faux leather material with a racer graphics design, oversized fit and bomber style, what's not to love? Pair this jacket with red shorts, white tee, and fresh kicks for an unreal outfit of the day.",
+      "colors": [
+        {
+          "name": "Black",
+          "hex": "#000000"
+        },
+        {
+          "name": "Red",
+          "hex": "#FF0000"
+        },
+        {
+          "name": "White",
+          "hex": "#FFFFFF"
+        }
+      ],
+      "sizes": ["S", "M", "L"],
+      "pricing": {
+        "currency": "USD",
+        "regular_price": 80.00,
+        "sale_price": 70.00
+      },
+      "details": {
+        "material": [
+          "100% Silk",
+          "Soft and Smooth"
+        ],
+        "care_instructions": [
+          "Dry clean only",
+          "Do not bleach",
+          "Iron on low heat"
+        ]
+      },
+      "gallery": [
+        {
+          "url": "https://firebasestorage.googleapis.com/v0/b/trend-vr-demo.appspot.com/o/clothes%2Fjackets%2Fwhite%2Fwhite-jacket-1.jpg?alt=media&token=2b6cc997-0604-4b23-8fd5-cb82cd4d410e",
+          "alt": "Front view of the dress"
+        },
+        {
+          "url": "https://firebasestorage.googleapis.com/v0/b/trend-vr-demo.appspot.com/o/clothes%2Fjackets%2Fwhite%2Fwhite-jacket-2.jpg?alt=media&token=27fc1e91-d68f-45d5-922a-16fa0e2db3ba",
+          "alt": "Back view of the dress"
+        },
+        {
+          "url": "https://firebasestorage.googleapis.com/v0/b/trend-vr-demo.appspot.com/o/clothes%2Fjackets%2Fwhite%2Fwhite-jacket-3.jpg?alt=media&token=f89243a5-8d54-4b08-ac82-1ddf1298463b",
+          "alt": "Close-up of the fabric"
+        },
+        {
+          "url": "https://firebasestorage.googleapis.com/v0/b/trend-vr-demo.appspot.com/o/clothes%2Fjackets%2Fwhite%2Fwhite-jacket-AI.jpg?alt=media&token=bdb05263-1cda-4322-b71d-5de066505dae",
+          "alt": "Close-up of the fabric"
+        }
+      ]
+    }
+  ]
+}
