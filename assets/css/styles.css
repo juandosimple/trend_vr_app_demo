@@ -134,6 +134,12 @@ body {
         align-items: center;
         display: flex;
     }
+
+    ul#settingsList li{
+        display: flex;
+        justify-content: space-around;
+        width: 260px;
+    }
     #imageModal img{
         max-width: calc(100vh / 2);
         margin: 0 auto;

@@ -1,343 +1,282 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Results</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
-      crossorigin="anonymous"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Syne:wght@400..800&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="./assets/css/settings.css" />
-    <link rel="stylesheet" href="./assets/css/styles.css" />
-    <link
-      rel="apple-touch-icon"
-      sizes="57x57"
-      href="./assets/images/apple-icon-57x57.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="60x60"
-      href="./assets/images/apple-icon-60x60.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="72x72"
-      href="./assets/images/apple-icon-72x72.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="76x76"
-      href="./assets/images/apple-icon-76x76.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="114x114"
-      href="./assets/images/apple-icon-114x114.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="120x120"
-      href="./assets/images/apple-icon-120x120.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="144x144"
-      href="./assets/images/apple-icon-144x144.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="152x152"
-      href="./assets/images/apple-icon-152x152.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href="./assets/images/apple-icon-180x180.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="192x192"
-      href="./assets/images/android-icon-192x192.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="./assets/images/favicon-32x32.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="96x96"
-      href="./assets/images/favicon-96x96.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href="./assets/images/favicon-16x16.png"
-    />
-    <link rel="manifest" href="./assets/images/manifest.json" />
-    <meta name="msapplication-TileColor" content="#ffffff" />
-    <meta
-      name="msapplication-TileImage"
-      content="./assets/images/ms-icon-144x144.png"
-    />
-    <meta name="theme-color" content="#ffffff" />
-    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-storage.js"></script>
-    <script>
-      var firebaseConfig = {
-        apiKey: "AIzaSyCtZxlonTfLpU_5-HMuf6RdDmbJy3iMdPU",
-        authDomain: "trend-vr-demo.firebaseapp.com",
-        projectId: "trend-vr-demo",
-        storageBucket: "trend-vr-demo.appspot.com",
-        messagingSenderId: "383550694303",
-        appId: "1:383550694303:web:362cf770089f4008e4d3aa",
-      };
-      firebase.initializeApp(firebaseConfig);
-      var storage = firebase.storage();
-    </script>
-  </head>
 
-  <body>
-    <!-- Results Page -->
-    <div class="logo-header">
-      <img src="./assets/images/logo-white.png" class="logo" />
-    </div>
-    <div class="container">
-      <div class="row justify-content-center vertical-centering">
-        <div class="col-12 wizard-container__content">
-          <ul>
-            <li>
-              <a href="#" id="erase-generated-user"
-                ><i data-feather="user"></i> Erase user</a
-              >
-            </li>
-            <li>
-              <a href="#" id="erase-generated-images"
-                ><i data-feather="cpu"></i> Erase generated images</a
-              >
-            </li>
-            <li>
-              <a href="#" id="erase-profile-image"
-                ><i data-feather="image"></i> Erase profile picture</a
-              >
-            </li>
-            <li>
-              <a href="#" id="settings-link"
-                ><i data-feather="log-out"></i> Full reset</a
-              >
-            </li>
-          </ul>
-        </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Results</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400..800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./assets/css/settings.css" />
+  <link rel="stylesheet" href="./assets/css/styles.css" />
+  <link rel="apple-touch-icon" sizes="57x57" href="./assets/images/apple-icon-57x57.png" />
+  <link rel="apple-touch-icon" sizes="60x60" href="./assets/images/apple-icon-60x60.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="./assets/images/apple-icon-72x72.png" />
+  <link rel="apple-touch-icon" sizes="76x76" href="./assets/images/apple-icon-76x76.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="./assets/images/apple-icon-114x114.png" />
+  <link rel="apple-touch-icon" sizes="120x120" href="./assets/images/apple-icon-120x120.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="./assets/images/apple-icon-144x144.png" />
+  <link rel="apple-touch-icon" sizes="152x152" href="./assets/images/apple-icon-152x152.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="./assets/images/apple-icon-180x180.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="./assets/images/android-icon-192x192.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="96x96" href="./assets/images/favicon-96x96.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="./assets/images/favicon-16x16.png" />
+  <link rel="manifest" href="./assets/images/manifest.json" />
+  <meta name="msapplication-TileColor" content="#ffffff" />
+  <meta name="msapplication-TileImage" content="./assets/images/ms-icon-144x144.png" />
+  <meta name="theme-color" content="#ffffff" />
+  <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-storage.js"></script>
+  <script>
+    var firebaseConfig = {
+      apiKey: "AIzaSyCtZxlonTfLpU_5-HMuf6RdDmbJy3iMdPU",
+      authDomain: "trend-vr-demo.firebaseapp.com",
+      projectId: "trend-vr-demo",
+      storageBucket: "trend-vr-demo.appspot.com",
+      messagingSenderId: "383550694303",
+      appId: "1:383550694303:web:362cf770089f4008e4d3aa",
+    };
+    firebase.initializeApp(firebaseConfig);
+    var storage = firebase.storage();
+  </script>
+</head>
+
+<body>
+  <!-- Results Page -->
+  <div class="logo-header">
+    <img src="./assets/images/logo-white.png" class="logo" />
+  </div>
+  <div class="container">
+    <div class="row justify-content-center vertical-centering">
+      <div class="col-12 wizard-container__content">
+        <ul id="settingsList">
+          <li>
+            <a href="#" id="erase-generated-user"><i data-feather="user"></i> Erase user</a>
+          </li>
+          <li>
+            <a href="#" id="erase-generated-images"><i data-feather="cpu"></i> Erase generated images</a>
+          </li>
+          <li>
+            <a href="#" id="erase-profile-image"><i data-feather="image"></i> Erase profile picture</a>
+          </li>
+          <li>
+            <a href="#" id="settings-link"><i data-feather="log-out"></i> Full reset</a>
+          </li>
+        </ul>
       </div>
     </div>
-    <div class="wizard-footer">
-      <a href="profile.html" type="button"><i data-feather="user"></i></a>
-      <a href="gallery.html" type="button"><i data-feather="image"></i></a>
-      <a href="explore.html" type="button"><i data-feather="aperture"></i></a>
-      <a href="search.html" type="button"><i data-feather="search"></i></a>
-      <a href="settings.html" class="active" type="button"
-        ><i data-feather="settings"></i
-      ></a>
-    </div>
-    <!-- Bootstrap JS -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-      crossorigin="anonymous"
-    ></script>
-    <!-- Feather Icons -->
-    <script src="https://unpkg.com/feather-icons"></script>
-    <script>
-      feather.replace();
-    </script>
-    <!-- Page Scripts -->
-    <script>
-      window.onload = function () {
-        let userID = localStorage.getItem("userID");
-        if (!userID) {
-          window.location.href = "index.html";
-        } else {
-          console.log("Current User ID:", userID); // For debugging purposes
-        }
-      };
+  </div>
+  <div class="wizard-footer">
+    <a href="profile.html" type="button"><i data-feather="user"></i></a>
+    <a href="gallery.html" type="button"><i data-feather="image"></i></a>
+    <a href="explore.html" type="button"><i data-feather="aperture"></i></a>
+    <a href="search.html" type="button"><i data-feather="search"></i></a>
+    <a href="settings.html" class="active" type="button"><i data-feather="settings"></i></a>
+  </div>
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+  <!-- Feather Icons -->
+  <script src="https://unpkg.com/feather-icons"></script>
+  <script>
+    feather.replace();
+  </script>
+  <!-- Page Scripts -->
+  <script>
+    window.onload = function () {
+      let userID = localStorage.getItem("userID");
+      if (!userID) {
+        window.location.href = "index.html";
+      } else {
+        console.log("Current User ID:", userID); // For debugging purposes
+      }
+    };
 
-      // ERASE GENERATED IMAGES
-      document
-        .getElementById("erase-generated-images")
-        .addEventListener("click", async function (event) {
-          event.preventDefault();
-
-          let userID = localStorage.getItem("userID");
-
-          if (userID) {
-            try {
-              console.log(`UserID found: ${userID}`);
-
-              // Asegúrate de que la referencia de almacenamiento esté correctamente definida
-              const storage = firebase.storage();
-              const listRef = storage.ref(`users/${userID}/generated-images`);
-
-              console.log(
-                `Storage reference created: users/${userID}/generated-images`
-              );
-
-              // Lista todos los elementos bajo la referencia
-              const listResults = await listRef.listAll();
-              console.log(
-                `List results: ${listResults.items.length} items found`
-              );
-
-              if (listResults.items.length === 0) {
-                console.log("No items found in the folder.");
-                alert("No items found in the folder.");
-                return;
-              }
-
-              // Crear una lista de promesas para eliminar cada elemento
-              const deletePromises = listResults.items.map((item) => {
-                console.log(`Deleting item: ${item.fullPath}`);
-                return item.delete();
-              });
-
-              // Esperar a que todas las operaciones de eliminación se completen
-              await Promise.all(deletePromises);
-              console.log("All items deleted");
-
-              // Actualizar la UI
-              var message = document.getElementById("erase-generated-images");
-              message.style.backgroundColor = "red";
-              message.innerText = "Successfully erased";
-            } catch (error) {
-              console.error("Error erasing generated images: ", error);
-              alert("Failed to erase generated images.");
-            }
-          } else {
-            alert("No user ID found. Please log in again.");
-            window.location.href = "index.html";
-          }
-        });
-      // ERASE GENERATED IMAGES
-
-      // ERASE USER
-      const userLink = document.getElementById("erase-generated-user");
-      userLink.addEventListener("click", function (event) {
-        event.preventDefault(); // Prevent the default action of the link
-        console.log(
-          "Click event detected. Deleting userID from localStorage..."
-        );
-        localStorage.removeItem("userID"); // Delete the specific userID key
-        localStorage.removeItem("userImageProfile"); // Delete the specific userImageProfile key
-        localStorage.removeItem("generatedItem"); // Delete the specific generatedItem key
-        userLink.style.backgroundColor = "red";
-        userLink.innerText = "Successfully erased";
-        window.location.href = "index.html"; // Redirect to index.html
-      });
-      // ERASE USER
-
-      // ERASE PROFILE IMAGE
-      const profileImageButton = document.getElementById("erase-profile-image");
-      profileImageButton.addEventListener("click", async function (event) {
+    // ERASE GENERATED IMAGES
+    document
+      .getElementById("erase-generated-images")
+      .addEventListener("click", async function (event) {
         event.preventDefault();
-        console.log(
-          "Click event detected. Deleting user data from Firestore and localStorage..."
-        );
 
-        const userID = localStorage.getItem("userID");
+        let userID = localStorage.getItem("userID");
 
         if (userID) {
           try {
-            // Referencia a la colección 'profile' del usuario en Firestore
-            const profileCollectionRef = storage.collection(
-              `users/${userID}/profile`
+            console.log(`UserID found: ${userID}`);
+
+            // Asegúrate de que la referencia de almacenamiento esté correctamente definida
+            const storage = firebase.storage();
+            const listRef = storage.ref(`users/${userID}/generated-images`);
+
+            console.log(
+              `Storage reference created: users/${userID}/generated-images`
             );
 
-            // Lista todos los documentos en la colección 'profile'
-            const profileDocsSnapshot = await profileCollectionRef.get();
+            // Lista todos los elementos bajo la referencia
+            const listResults = await listRef.listAll();
+            console.log(
+              `List results: ${listResults.items.length} items found`
+            );
 
-            // Crear una lista de promesas para eliminar cada documento
-            const deletePromises = profileDocsSnapshot.docs.map((doc) => {
-              console.log(`Deleting document: ${doc.id} in profile`);
-              return doc.ref.delete();
+            if (listResults.items.length === 0) {
+              console.log("No items found in the folder.");
+              var message = document.getElementById("erase-generated-images");
+              message.style.backgroundColor = "orange";
+              message.innerText = "No items found";
+              return;
+            }
+
+            // Crear una lista de promesas para eliminar cada elemento
+            const deletePromises = listResults.items.map((item) => {
+              console.log(`Deleting item: ${item.fullPath}`);
+              return item.delete();
             });
 
             // Esperar a que todas las operaciones de eliminación se completen
             await Promise.all(deletePromises);
-            console.log("All profile documents deleted");
+            console.log("All items deleted");
 
             // Actualizar la UI
-            profileImageButton.style.backgroundColor = "red";
-            profileImageButton.innerText = "Successfully erased";
-
-            window.location.href = "profile.html";
+            var message = document.getElementById("erase-generated-images");
+            message.style.backgroundColor = "red";
+            message.innerText = "Successfully erased";
           } catch (error) {
-            console.error("Error deleting user data from Firestore: ", error);
-            alert("Failed to delete user data. Please try again.");
+            console.error("Error erasing generated images: ", error);
+            alert("Failed to erase generated images.");
           }
         } else {
           alert("No user ID found. Please log in again.");
           window.location.href = "index.html";
         }
       });
+    // ERASE GENERATED IMAGES
 
-      // ERASE PROFILE IMAGE
+    // ERASE USER
+    const userLink = document.getElementById("erase-generated-user");
+    userLink.addEventListener("click", function (event) {
+      event.preventDefault(); // Prevent the default action of the link
+      console.log(
+        "Click event detected. Deleting userID from localStorage..."
+      );
+      localStorage.removeItem("userID"); // Delete the specific userID key
+      localStorage.removeItem("userImageProfile"); // Delete the specific userImageProfile key
+      localStorage.removeItem("generatedItem"); // Delete the specific generatedItem key
+      userLink.style.backgroundColor = "red";
+      userLink.innerText = "Successfully erased";
+      window.location.href = "index.html"; // Redirect to index.html
+    });
+    // ERASE USER
 
-      // ERASE USER AND FIRESTORE
-      const settingsLink = document.getElementById("settings-link");
-      settingsLink.addEventListener("click", async function (event) {
-        event.preventDefault(); // Prevent the default action of the link
-        console.log(
-          "Click event detected. Deleting user data from Firestore and localStorage..."
-        );
+    // ERASE PROFILE IMAGE
+    const profileImageButton = document.getElementById("erase-profile-image");
+    profileImageButton.addEventListener("click", async function (event) {
+      event.preventDefault();
+      console.log(
+        "Click event detected. Deleting user data from Firestore and localStorage..."
+      );
 
-        const userID = localStorage.getItem("userID");
+      const userID = localStorage.getItem("userID");
 
-        if (userID) {
-          try {
-            // Inicializa Firestore
-            const firestore = firebase.firestore();
+      if (userID) {
+        try {
+          // Referencia a la colección 'profile' del usuario en Firestore
+          const profileCollectionRef = storage.collection(
+            `users/${userID}/profile`
+          );
 
-            // Referencia al documento del usuario en Firestore
-            const userDocRef = firestore.collection("users").doc(userID);
+          // Lista todos los documentos en la colección 'profile'
+          const profileDocsSnapshot = await profileCollectionRef.get();
 
-            // Eliminar el documento del usuario en Firestore
-            await userDocRef.delete();
-            console.log(
-              `User document with ID ${userID} deleted from Firestore`
-            );
+          // Crear una lista de promesas para eliminar cada documento
+          const deletePromises = profileDocsSnapshot.docs.map((doc) => {
+            console.log(`Deleting document: ${doc.id} in profile`);
+            return doc.ref.delete();
+          });
 
-            // Eliminar datos específicos del localStorage
-            localStorage.removeItem("userID");
-            localStorage.removeItem("userImageProfile");
-            localStorage.removeItem("generatedItem");
+          // Esperar a que todas las operaciones de eliminación se completen
+          await Promise.all(deletePromises);
+          console.log("All profile documents deleted");
 
-            settingsLink.style.backgroundColor = "red";
-            settingsLink.innerText = "Successfully erased";
+          // Actualizar la UI
+          profileImageButton.style.backgroundColor = "red";
+          profileImageButton.innerText = "Successfully erased";
 
-            // Redirigir al usuario a index.html
-            window.location.href = "index.html";
-          } catch (error) {
-            console.error("Error deleting user data from Firestore: ", error);
-            alert("Failed to delete user data. Please try again.");
-          }
-        } else {
-          alert("No user ID found. Please log in again.");
-          window.location.href = "index.html";
+          window.location.href = "profile.html";
+        } catch (error) {
+          console.error("Error deleting user data from Firestore: ", error);
+          alert("Failed to delete user data. Please try again.");
         }
-      });
-      // ERASE USER AND FIRESTORE
-    </script>
-  </body>
+      } else {
+        alert("No user ID found. Please log in again.");
+        window.location.href = "index.html";
+      }
+    });
+
+    // ERASE PROFILE IMAGE
+
+// ERASE USER AND FIRESTORE
+const settingsLink = document.getElementById("settings-link");
+settingsLink.addEventListener("click", async function (event) {
+  event.preventDefault(); // Prevent the default action of the link
+  console.log(
+    "Click event detected. Deleting user data from Firestore and localStorage..."
+  );
+
+  const userID = localStorage.getItem("userID");
+
+  if (userID) {
+    try {
+      // Inicializa Firestore
+      const firestore = firebase.firestore();
+
+      // Referencia al documento del usuario en Firestore
+      const userDocRef = firestore.collection("users").doc(userID);
+
+      // Intentar obtener el documento del usuario
+      const userDoc = await userDocRef.get();
+
+      if (userDoc.exists) {
+        // Eliminar el documento del usuario en Firestore si existe
+        await userDocRef.delete();
+        console.log(`User document with ID ${userID} deleted from Firestore`);
+      } else {
+        console.log(`No user document found in Firestore for ID ${userID}`);
+      }
+
+      // Continuar con la eliminación de los datos de localStorage
+      localStorage.removeItem("userID");
+      
+      if (localStorage.getItem("userImageProfile")) {
+        localStorage.removeItem("userImageProfile");
+      }
+
+      if (localStorage.getItem("generatedItem")) {
+        localStorage.removeItem("generatedItem");
+      }
+
+      settingsLink.style.backgroundColor = "red";
+      settingsLink.innerText = "Successfully erased";
+
+      // Redirigir al usuario a index.html
+      window.location.href = "index.html";
+    } catch (error) {
+      console.error("Error deleting user data from Firestore: ", error);
+      alert("Failed to delete user data. Please try again.");
+    }
+  } else {
+    alert("No user ID found. Please log in again.");
+    window.location.href = "index.html";
+  }
+});
+// ERASE USER AND FIRESTORE
+
+
+  </script>
+</body>
+
 </html>
