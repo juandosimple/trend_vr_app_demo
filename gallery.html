@@ -258,12 +258,13 @@
         displayImages();
         console.log("Current User ID:", userID); // Para propósitos de depuración
       }
-      // Evento de clic para el botón de descarga
-      document.getElementById("downloadButton").addEventListener('click', function (e) {
-        e.preventDefault(); // Prevenir la navegación
-        const imageUrl = document.getElementById("modalImage").src; // Asumiendo que modalImage tiene la URL de la imagen
-        downloadImage(imageUrl);
-      });
+  // Event listener for the download button
+  document.getElementById("downloadButton").addEventListener('click', function (e) {
+    e.preventDefault(); // Prevent navigation
+    const imageUrl = document.getElementById("modalImage").src; // Assuming modalImage has the image URL
+    console.log(imageUrl)
+    downloadImage(imageUrl);
+  });
     };
 
     function displayImage(imageRef) {
@@ -300,20 +301,37 @@
     }
 
     function downloadImage(url) {
-      fetch(url)
-        .then(response => response.blob())
-        .then(blob => {
-          const blobUrl = URL.createObjectURL(blob);
-          const link = document.createElement('a');
-          link.href = blobUrl;
-          link.download = "downloadedImage.jpg"; // Puedes definir un nombre de archivo específico aquí
-          document.body.appendChild(link);
-          link.click();
-          document.body.removeChild(link);
-          URL.revokeObjectURL(blobUrl); // Limpiar el URL del Blob después de descargar
-        })
-        .catch(e => console.error('Error downloading image:', e));
-    }
+  fetch(url)
+    .then(response => response.blob())
+    .then(blob => {
+      const blobUrl = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = blobUrl;
+      link.download = "downloadedImage.jpg"; // You can specify a different file name here
+
+      // Check if the device is iOS
+      const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+      if (isIOS) {
+        // Special handling for iOS devices
+        const reader = new FileReader();
+        reader.onloadend = function () {
+          const url = reader.result;
+          const newWindow = window.open(url, '_blank');
+          newWindow.document.write('<img src="' + url + '">');
+          newWindow.document.close();
+        };
+        reader.readAsDataURL(blob);
+      } else {
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }
+
+      URL.revokeObjectURL(blobUrl); // Clean up the Blob URL after downloading
+    })
+    .catch(e => console.error('Error downloading image:', e));
+}
+
 
     // BD
 // BD
