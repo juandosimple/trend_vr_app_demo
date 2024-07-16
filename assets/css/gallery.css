@@ -111,6 +111,8 @@
 .modal-actions{
     display: flex;
     justify-content: space-around;
+    align-items: center;
+
 }
 
 .modal-actions a{

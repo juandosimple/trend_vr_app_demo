@@ -127,11 +127,13 @@
   </style>
   <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-storage.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-database.js"></script>
   <script>
     var firebaseConfig = {
       apiKey: "AIzaSyCtZxlonTfLpU_5-HMuf6RdDmbJy3iMdPU",
       authDomain: "trend-vr-demo.firebaseapp.com",
       projectId: "trend-vr-demo",
+      databaseURL: "https://trend-vr-demo-default-rtdb.europe-west1.firebasedatabase.app",
       storageBucket: "trend-vr-demo.appspot.com",
       messagingSenderId: "383550694303",
       appId: "1:383550694303:web:362cf770089f4008e4d3aa",
@@ -219,7 +221,18 @@
               <img src="data:image/png;base64,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" style="width: 24px;" />
             </a>
             <a id="downloadButton" href="#"><i data-feather="download"></i></a>
-          </div>
+            <a href='#' id="ai-action_share" style="position: relative;text-decoration:none">
+              <div style="display: none;"id="sparkle-share">
+                  <p style="margin:0">Shared!</p>
+                  <dotlottie-player src="./assets/images/sparkle.lottie" background="transparent" speed="1" style="width: 210px; height: 150px; position: absolute; left: -80px; top: -30px;" direction="1" playmode="normal" loop="" autoplay="true"></dotlottie-player>
+              </div>
+              <div  id="ai-action_share-icon" style="width: 24px;height: 24px;display:flex;justify-content: center;align-items: center;">
+                  <i data-feather="share"></i>
+              </div>
+              <div class="loader" style="display: none;">
+              <dotlottie-player src="./assets/images/mini-loader.lottie" background="transparent" speed="1" style="height: 100%;max-height: 40px;width: 50px;" direction="1" playMode="normal" loop autoplay></dotlottie-player>
+              </div>
+          </a>          </div>
         </div>
       </div>
     </div>
@@ -301,6 +314,92 @@
         })
         .catch(e => console.error('Error downloading image:', e));
     }
+
+    // BD
+// BD
+// Función para mostrar el loader y deshabilitar el botón
+function showLoader(button) {
+    button.querySelector('.loader').style.display = 'block';
+    document.getElementById('ai-action_share-icon').style.display = 'none';
+    button.disabled = true;
+}
+
+// Función para ocultar el loader y habilitar el botón
+function hideLoader(button) {
+    button.querySelector('.loader').style.display = 'none';
+    setTimeout(function () {
+        document.getElementById('sparkle-share').style.display = 'none';
+    }, 1800);
+    setTimeout(function () {
+        document.getElementById('ai-action_share-icon').style.display = 'flex';
+    }, 2000);
+    button.disabled = false;
+}
+
+
+async function shareGeneratedImage() {
+    const userImageProfile = localStorage.getItem('userImageProfile');
+
+    // Intenta obtener generatedImageSrc de localStorage
+    let generatedImageSrc = localStorage.getItem('generatedItem');
+
+    // Si no se encuentra en localStorage, obténlo del documento
+    // if (!generatedImageSrc) {
+    //     const generatedImageElement = document.getElementById('ai-generated_image');
+    //     if (generatedImageElement) {
+    //         generatedImageSrc = generatedImageElement.src;
+    //     }
+    // }
+
+    //const scoreLabel = document.getElementById('ai-score_label').textContent;
+    const userID = localStorage.getItem('userID'); // Obtener el userID almacenado en el local storage
+
+    if (!userImageProfile) {
+        console.error('Faltan datos necesarios para compartir la imagen');
+        return;
+    }
+
+    const newEntry = {
+        userID: userID,
+        userName: "ExampleUserName", // Puedes obtener esto de tu aplicación según corresponda
+        name: "ExampleName", // Puedes obtener esto de tu aplicación según corresponda
+        userVotes: 0, // Inicialmente puede ser 0 o el valor que necesites
+        userImage: generatedImageSrc,
+        date: new Date().toISOString().split('T')[0], // Fecha actual en formato YYYY-MM-DD
+        //imageScore: scoreLabel
+    };
+
+    const shareButton = document.getElementById('ai-action_share');
+    showLoader(shareButton);
+
+    try {
+        // Crear una clave única para la imagen usando una marca de tiempo
+        const imageKey = `image_${Date.now()}`;
+
+        // Insertar el nuevo registro en Firebase usando set() con la clave de usuario y la clave de imagen
+        await firebase.database().ref(`lens/${userID}/${imageKey}`).set(newEntry);
+
+        document.getElementById('sparkle-share').style.display = 'block';
+        const element = document.getElementById('sparkle-share');
+        const computedStyle = window.getComputedStyle(element);
+        const displayProperty = computedStyle.display;
+        console.log(displayProperty);
+
+        console.log('Imagen compartida con éxito');
+        console.log(document.getElementById('sparkle-share'));
+    } catch (error) {
+        console.error('Error al compartir la imagen:', error);
+    } finally {
+        hideLoader(shareButton);
+    }
+}
+
+
+
+document.getElementById('ai-action_share').addEventListener('click', function (event) {
+    event.preventDefault(); // Para evitar que el enlace realice la navegación
+    shareGeneratedImage();
+});
   </script>
 
   <!-- Feather Icons -->
